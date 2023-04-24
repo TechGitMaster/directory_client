@@ -88,7 +88,7 @@ const Resources: React.FC = () => {
                     <div className='flex flex-wrap justify-center pl-3'>
                         {
                             '.'.repeat(5).split('').map(a => 
-                                <div key={Math.random()} className='lg:w-[230px] md:w-[230px] w-[180px] min-h-[288px] mr-3 mb-3 rounded-md overflow-hidden bg-[#2A2A2C] cursor-pointer'>
+                                <div key={Math.random()} className='lg:w-[230px] md:w-[230px] w-[160px] min-h-[288px] mr-3 mb-3 rounded-md overflow-hidden bg-[#2A2A2C] cursor-pointer'>
                                     <img src={example} alt="resources" className='h-[200px] mb-3 object-cover' />
                                     <span className='lg:text-[17px] md:text-[17px] text-[15px] text-[#FFF200] mb-1 p-3'>BSIT</span>
                                     <p className='lg:text-[17px] md:text-[17px] text-[15px] text-white p-3'>Proposed systemized wr directory for eb-bas pape s...</p>
