@@ -1,0 +1,86 @@
+
+/*________FOR 'SEE how it works'___________*/
+@media (max-width:544px) {
+    .divH{
+        display: block;
+    }
+
+    .howiT{
+        margin-bottom: 5px;
+    }
+
+    .listOH{
+        width:100%;
+        display: flex;
+        margin:0px;
+    }
+
+    .pC{
+        text-align: left;
+    }
+
+    .pCIT{
+        padding:0px 30px 0px 30px;
+        margin-bottom: 20px;
+    }
+
+    .pCT{
+        font-size: 18px;
+        margin:0px 0px 10px 0px;
+    }
+
+    .pCI{
+        font-size: 17px;
+        margin:0px 0px 10px 0px;
+    }
+
+    .infoomD{
+      font-size:15px;  
+    }
+}
+@media (max-width:424px){
+    .pCT{
+        font-size: 17px;
+        margin:0px 0px 10px 0px;
+    }
+
+    .pCI{
+        font-size: 15px;
+        margin:0px 0px 10px 0px;
+    }
+
+    .imgG{
+        height: 50px;
+    }
+}
+
+
+
+
+/*___________FOR 'Meet the team of the operation'______________*/
+@media (max-width:886px){
+    .omD{
+        display: block;
+    }
+
+    .womD{
+        width:100%;
+    }
+
+    .disPlayP{
+        display: none;
+    }
+
+    .disPlayP2{
+        display: block;
+    }
+}
+
+@media (max-width:423px){
+    .mgF{
+        width:160px;
+    }
+}
+
+
+

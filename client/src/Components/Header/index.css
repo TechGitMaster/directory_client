@@ -1,0 +1,33 @@
+.burger{
+    display: none;
+}
+
+.header{
+    z-index:10000;
+}
+
+@media (max-width:873px){
+    .navigation{
+        display:none;
+    }
+    .leftN{
+        width:100%;
+        margin-right:13px;
+    }
+    .rightN{
+        display:none;
+    }
+    .burger{
+        display: block;
+    }
+}
+
+@media (max-width:490px){
+    .menuBurger{
+        width: 100%;
+    }
+
+    .txtBurger{
+        font-size:17px;
+    }
+}
