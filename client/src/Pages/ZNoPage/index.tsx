@@ -9,7 +9,7 @@ const NotFound: React.FC = () => {
                 <div className='mx-auto px-5 max-w-[1250px] lg:flex items-center'>
                     <div className='lg:hidden block'>
                         <div className='flex justify-center'>
-                            <img src={ notFound } alt="404" className='max-w-[500px] max-h-[400px] px-10'/>
+                            <img src={ notFound } alt="404" className='w-full max-h-[500px] px-10'/>
                         </div>
                     </div>
                     <div className='lg:w-[50%] w-[100%]'>
