@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "\"use node when uploading to vercel and nodemon for local\" nodemon index",
+    "start": "\"use node when uploading to vercel and nodemon for local\" node index",
     "dev": "nodemon index"
   },
   "keywords": [],
