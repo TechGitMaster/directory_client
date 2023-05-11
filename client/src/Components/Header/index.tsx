@@ -13,7 +13,9 @@ const Header1: React.FC = () => {
 
                     {/*____left____*/}
                     <div className='flex h-full'>
-                        <img src={ logo } className='w-[55px] rounded-md' alt="logo" />
+                        {/*<img src={ logo } className='w-[55px] rounded-md' alt="logo" />*/}
+                        
+                        <div className='w-[55px] h-full rounded-md'></div>
                         <div className='lg:w-96 max-w-96 h-full flex justify-between items-center ml-3 rounded-[20px] border-[3px] pl-3 pr-2 border-gray-300'>
                             <input type='text' placeholder='Search for your thesis' className='w-[87%] text-[15px] text-black outline-none'/>
                             <div className='bg-[#EDF0F5] rounded-[50%] p-1 cursor-pointer'>
