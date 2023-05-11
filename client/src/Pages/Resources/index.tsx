@@ -1,8 +1,6 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState } from 'react';
 import Footer from '../../Components/Footer';
-import { example, gifLoading, empty } from '../../utilities/PNG';
-import { GET_RESOURCES } from '../../Redux/Actions';
+import { example } from '../../utilities/PNG';
 
 const Resources: React.FC = () => {
 
