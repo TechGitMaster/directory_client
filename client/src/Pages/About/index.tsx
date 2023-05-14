@@ -41,11 +41,11 @@ const About: React.FC = () => {
                 <div className='mx-auto max-w-[1250px] flex omD'>
                     <div className='w-[50%] py-3 womD'>
                         <p className='font-semibold lg:text-[28px] md:text-[28px] text-[23px] text-white mb-5'>Meet the team of the operation:</p>
-                        <p className='text-white text-[17px] infoomD'>Every answer comes from a verified expert, specifically trained in your area of study. And each one of our 2,600+ tutors undergoes an in-depth onboarding process, including:</p>
+                        <p className='text-white text-[17px] infoomD'>The aim of our group is to design and develop a website for the STI San Jose Del Monte agency to post the best research, and for all the STI San Jose Del Monte students who wants to search for the best research that been made by past researchers in the STI San Jose Del Monte. Included scopes:</p>
                         <div className='m-5'>
-                            <li className='text-white text-[17px] mb-4 infoomD'>A subject-specific application to evaluate their expertise.</li>
-                            <li className='text-white text-[17px] mb-4 infoomD'>An official credential check to confirm their background.</li>
-                            <li className='text-white text-[17px] mb-4 infoomD'>Student-driven feedback to ensure clear, thorough content.</li>
+                            <li className='text-white text-[17px] mb-4 infoomD'>To design and develop a module that will help the users to discover a specific research they want to know.</li>
+                            <li className='text-white text-[17px] mb-4 infoomD'>To design and develop a module that will help the users to post and to express their emotions on those past researcher thesis in the feedback feature of the website.</li>
+                            <li className='text-white text-[17px] mb-4 infoomD'>To design and develop a module that will enable the agency manage a website that can help Academic thesis directory owner gain opportunities to become known.</li>
                         </div>
                     </div>
                     <div className='w-[50%] womD'>
@@ -53,24 +53,24 @@ const About: React.FC = () => {
                         <div className='block disPlayP'>
                             <div className='flex justify-center items-center'>
                                 <div>
-                                    <img src={ member1 } alt="members" className='rounded-lg'/>
+                                    <img src={ member1 } alt="members" className='rounded-lg h-[266px] object-cover'/>
                                 </div>
                                 <div className='mx-4'>
-                                    <img src={ member2 } alt="members" className='rounded-lg mb-4'/>
-                                    <img src={ member3 } alt="members" className='rounded-lg'/>
+                                    <img src={ member2 } alt="members" className='rounded-lg mb-4 h-[199px] object-cover'/>
+                                    <img src={ member3 } alt="members" className='rounded-lg h-[199px] object-cover'/>
                                 </div>
                                 <div>
-                                    <img src={ member4 } alt="members" className='rounded-lg'/>
+                                    <img src={ member4 } alt="members" className='rounded-lg h-[266px] object-cover'/>
                                 </div>
                             </div>
                         </div>
 
                         <div className='hidden disPlayP2'>
-                            <div className='w-[100%] flex flex-wrap justify-center'>
-                            <img src={ member1 } alt="members" className='w-[175px] rounded-lg mt-3 mgF'/>
-                            <img src={ member2 } alt="members" className='w-[175px] rounded-lg ml-3 mt-3 mgF'/>
-                            <img src={ member3 } alt="members" className='w-[175px] rounded-lg ml-3 mt-3 mgF'/>
-                            <img src={ member4 } alt="members" className='w-[175px] rounded-lg mx-3 mt-3 mgF'/>
+                            <div className='w-[100%] grid gap-2 sm:grid-cols-4 grid-cols-2 items-center'>
+                                <img src={ member1 } alt="members" className='w-full max-h-[200px] object-cover rounded-lg'/>
+                                <img src={ member2 } alt="members" className='w-full max-h-[200px] object-cover rounded-lg'/>
+                                <img src={ member3 } alt="members" className='w-full max-h-[200px] object-cover rounded-lg'/>
+                                <img src={ member4 } alt="members" className='w-full max-h-[200px] object-cover rounded-lg'/>
                             </div>
                         </div>
                     </div>
