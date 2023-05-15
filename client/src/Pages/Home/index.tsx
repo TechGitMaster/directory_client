@@ -14,7 +14,7 @@ const Home: React.FC = () => {
                 <div>
                     <h1 className='lg:w-[60%] md:w-[70%] w-[100%] font-medium lg:text-[60px] md:text-[60px] text-[40px] lg:text-left md:text-left text-center text-white lg:leading-[70px] md:leading-[70px] leading-[50px]'>Find a study that's suitable in your research</h1>
                     <div className='lg:block md:block flex justify-center'>
-                        <p className='lg:w-[48%] md:w-[48%] w-[100%] font-inter font-light text-[17px] lg:text-left md:text-left text-center text-[#EFEFEF] mt-2 mb-6'>Students have unlimited access for research materials that’s free for STI students.</p>
+                        <p className='lg:w-[48%] md:w-[48%] w-[100%] font-inter font-light text-[17px] lg:text-left md:text-left text-center text-[#EFEFEF] mt-2 mb-6'>Students have unlimited access for research materials that’s free for students.</p>
                     </div>
                     <div className='lg:block md:block flex justify-center'>
                         <div className='w-[185px] flex items-center justify-center bg-[#FFF200] lg:py-[13px] md:py-[13px] py-[11px] lg:px-[20px] md:px-[20px] px-[16px] rounded-lg cursor-pointer'>
