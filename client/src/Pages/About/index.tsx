@@ -44,8 +44,8 @@ const About: React.FC = () => {
                         <p className='text-white text-[17px] infoomD'>The aim of our group is to design and develop a website to post the best research, and for all the  students who wants to search for the best research that been made by past researchers in this school. Included scopes:</p>
                         <div className='m-5'>
                             <li className='text-white text-[17px] mb-4 infoomD'>To design and develop a module that will help the users to discover a specific research they want to know.</li>
-                            <li className='text-white text-[17px] mb-4 infoomD'>To design and develop a module that will help the users to post and to express their emotions on those past researcher thesis in the feedback feature of the website.</li>
-                            <li className='text-white text-[17px] mb-4 infoomD'>To design and develop a module that will enable the agency manage a website that can help Academic thesis directory owner gain opportunities to become known.</li>
+                            <li className='text-white text-[17px] mb-4 infoomD'>To design and develop a module that will help the users to post and to express their emotions on those past researcher in the feedback feature of the website.</li>
+                            <li className='text-white text-[17px] mb-4 infoomD'>To design and develop a module that will enable the agency manage a website that can help Academic research directory owner gain opportunities to become known.</li>
                         </div>
                     </div>
                     <div className='w-[50%] womD'>

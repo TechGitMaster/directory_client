@@ -28,9 +28,9 @@ const Home: React.FC = () => {
         <div className='min-h-[300px] bg-white px-3'>
             <div className='mx-auto max-w-[1250px] py-[50px]'>
                 <p className='text-center text-[#291943] lg:text-[40px] md:text-[40px] text-[30px] font-inter font-bold'>Year-top Studies</p>
-                <p className='text-center lg:text-[20px] md:text-[20px] text-[17px] font-inter mt-[-5px]'>Our top thesis and research study documents</p>
+                <p className='text-center lg:text-[20px] md:text-[20px] text-[17px] font-inter mt-[-5px]'>Our top research study documents</p>
                 <div className='mt-10'>
-                    <p className='text-black lg:text-[23px] md:text-[23px] text-[20px] font-semibold'>Top 3 thesis studies</p>
+                    <p className='text-black lg:text-[23px] md:text-[23px] text-[20px] font-semibold'>Top 3 research studies</p>
                     <div className='py-2 z-3'>
                         <CarouselArrow />
                     </div>

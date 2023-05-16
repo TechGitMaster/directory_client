@@ -6,14 +6,14 @@ const Resources: React.FC = () => {
 
     const [titleCourses, setTitleCourses] = useState<boolean>(true);
     const [selected, setSelected] = useState<string>('ALL');
-    const courses: Array<string> = ['BSCS', 'BSIT', 'BSCpE', 'BSBA', 'BSAIS', 'BSA', 'BSRTCS', 'BACOMM', 'BSTM', 'ACT', 'ART'];
+    const courses: Array<string> = ['STEM', 'ABM', 'HUMSS', 'GAS', 'I.C.T'];
     const alphabets: Array<string> = ['ALL', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'O', 'P', 'Q', 'R', 'S', 'T',
     'U', 'V', 'X', 'Y', 'Z',];
 
     
     const asd = (conds:any) => {
         setTitleCourses(conds);
-        setSelected(conds ? 'ALL':'BSCS');
+        setSelected(conds ? 'ALL':'STEM');
     }
 
     //Button Search___________________________________________________
@@ -26,9 +26,9 @@ const Resources: React.FC = () => {
             {/*___Header___*/}
             <div className='bg-[#1790E0] px-4'>
                 <div className='mx-auto max-w-[1250px] pt-[115px] pb-[50px]'>
-                    <p className='lg:text-[30px] md:text-[30px] text-[26px] font-bold text-center text-white'>Find Study Resources by Course</p>
+                    <p className='lg:text-[30px] md:text-[30px] text-[26px] font-bold text-center text-white'>Find Study Resources by Track</p>
                     <div className='flex justify-center mt-3 mb-8'>
-                        <p className='lg:w-[65%] md:w-[65%] w-[90%] lg:text-[15px] md:text-[15px] text-[14px] text-white text-center'>Find the study resources you need for your thesis. Resources page will provide a available study documents by courses that will help you to study there thesis.</p>
+                        <p className='lg:w-[65%] md:w-[65%] w-[90%] lg:text-[15px] md:text-[15px] text-[14px] text-white text-center'>Find the study resources you need for your research. Resources page will provide a available study documents by track that will help you to study there research.</p>
                     </div>
 
                    {/*__Search bar__*/}
@@ -48,7 +48,7 @@ const Resources: React.FC = () => {
 
                             {/*___Course___*/}
                             <select className={'w-[99%] text-[15px] p-3 cursor-pointer rounded-md bg-white text-[#767373] '}>
-                                <option selected>Select a Course</option>
+                                <option selected>Select a Track</option>
                                 { courses.map(a => <option value={a}>{a}</option>) }
                             </select>
 
@@ -82,7 +82,7 @@ const Resources: React.FC = () => {
                             <div className={'w-[50%] text-center lg:text-[17px] md:text-[17px] text-[16px] p-3 '+(titleCourses ? 'bg-[#048BE2] text-white':'text-[#048BE2]')} 
                             onClick={ () => asd(true) }><span>Title</span></div>
                             <div className={'w-[50%] text-center lg:text-[17px] md:text-[17px] text-[16px] p-3 '+(!titleCourses ? 'bg-[#048BE2] text-white':'text-[#048BE2]')} 
-                            onClick={ () => asd(false) }><span>Course</span></div>
+                            onClick={ () => asd(false) }><span>Track</span></div>
                         </div>
                     </div>
                     
