@@ -37,7 +37,7 @@ const Home: React.FC = () => {
                 </div>
 
                 <div className='my-7'>
-                    <p className='text-black lg:text-[23px] md:text-[23px] text-[20px] font-semibold'>Top 10 selected studies</p>
+                    <p className='text-black lg:text-[23px] md:text-[23px] text-[20px] font-semibold'>Other selected research studies</p>
                     <div className='relative py-2'>
                         <CarouselsDot />
                     </div>
