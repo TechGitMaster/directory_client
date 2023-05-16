@@ -36,7 +36,7 @@ const Resources: React.FC = () => {
                         <div className={'lg:w-[60%] md:w-[60%] w-[100%] h-[55px] bg-white rounded-md '}>
                             {/*__Input text__*/}
                             <div className='w-full p-4'>
-                                <input type='text' placeholder='Search for your thesis' 
+                                <input type='text' placeholder='Search for your research' 
                                 className='w-[100%] lg:text-[16px] md:text-[16px] text-[15px] text-black outline-none '/>
                             </div>
                         </div>
