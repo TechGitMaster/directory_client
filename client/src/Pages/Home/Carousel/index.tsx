@@ -118,7 +118,7 @@ export const CarouselsDot: React.FC = () => {
                     <p><span className='font-semibold'>Student Member:</span> 04</p>
 
                     <div className='flex justify-center mt-7 mb-3'>
-                      <button className='w-[60%] h-[41px] text-[15px] text-white bg-[#1790E0] py-[11px] rounded-[20px] cursor-pointer'>Click to view</button>
+                      <button className='w-[60%] h-[41px] text-[15px] text-white bg-[#D85900] py-[11px] rounded-[20px] cursor-pointer'>Click to view</button>
                     </div>
                   </div>
                 </div>

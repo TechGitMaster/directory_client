@@ -6,7 +6,7 @@ const Resources: React.FC = () => {
 
     const [titleCourses, setTitleCourses] = useState<boolean>(true);
     const [selected, setSelected] = useState<string>('ALL');
-    const courses: Array<string> = ['STEM', 'ABM', 'HUMSS', 'GAS', 'I.C.T'];
+    const courses: Array<string> = ['STEM', 'ABM', 'HUMSS', 'GAS', 'I.C.T', 'Home Economics'];
     const alphabets: Array<string> = ['ALL', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'O', 'P', 'Q', 'R', 'S', 'T',
     'U', 'V', 'X', 'Y', 'Z',];
 
@@ -24,7 +24,7 @@ const Resources: React.FC = () => {
     return (
         <>
             {/*___Header___*/}
-            <div className='bg-[#1790E0] px-4'>
+            <div className='bg-[#D85900] px-4'>
                 <div className='mx-auto max-w-[1250px] pt-[115px] pb-[50px]'>
                     <p className='lg:text-[30px] md:text-[30px] text-[26px] font-bold text-center text-white'>Find Study Resources by Track</p>
                     <div className='flex justify-center mt-3 mb-8'>
@@ -79,9 +79,9 @@ const Resources: React.FC = () => {
                     {/*___Tilte and Course___*/}
                     <div className='flex justify-center cursor-pointer'>
                         <div className='w-[300px] bg-white rounded-md overflow-hidden flex'>
-                            <div className={'w-[50%] text-center lg:text-[17px] md:text-[17px] text-[16px] p-3 '+(titleCourses ? 'bg-[#048BE2] text-white':'text-[#048BE2]')} 
+                            <div className={'w-[50%] text-center lg:text-[17px] md:text-[17px] text-[16px] p-3 '+(titleCourses ? 'bg-[#D85900] text-white':'text-[#048BE2]')} 
                             onClick={ () => asd(true) }><span>Title</span></div>
-                            <div className={'w-[50%] text-center lg:text-[17px] md:text-[17px] text-[16px] p-3 '+(!titleCourses ? 'bg-[#048BE2] text-white':'text-[#048BE2]')} 
+                            <div className={'w-[50%] text-center lg:text-[17px] md:text-[17px] text-[16px] p-3 '+(!titleCourses ? 'bg-[#D85900] text-white':'text-[#048BE2]')} 
                             onClick={ () => asd(false) }><span>Track</span></div>
                         </div>
                     </div>
@@ -93,11 +93,11 @@ const Resources: React.FC = () => {
                             (titleCourses ?
                             //Alphabets_________________
                             alphabets.map(a => <p key={Math.random()} onClick={ () => setSelected(a) }
-                            className={'lg:text-[18px] md:text-[18px] text-[16px] p-2 rounded-md mx-2 cursor-pointer '+(selected === a ? 'bg-[#048BE2] text-white':'text-[#8C8681]')}>{a}</p>)
+                            className={'lg:text-[18px] md:text-[18px] text-[16px] p-2 rounded-md mx-2 cursor-pointer '+(selected === a ? 'bg-[#D85900] text-white':'text-[#8C8681]')}>{a}</p>)
                             :
                             //Course_________________
                             courses.map(a => <div key={Math.random()} onClick={ () => setSelected(a) }
-                            className={'text-[#8C8681] lg:text-[17px] md:text-[17px] text-[15px] p-2 rounded-md mx-3 cursor-pointer '+(selected === a ? 'bg-[#048BE2] text-white':'text-[#8C8681]')}>{a}</div>))
+                            className={'text-[#8C8681] lg:text-[17px] md:text-[17px] text-[15px] p-2 rounded-md mx-3 cursor-pointer '+(selected === a ? 'bg-[#D85900] text-white':'text-[#8C8681]')}>{a}</div>))
                         }
                     </div>
                     

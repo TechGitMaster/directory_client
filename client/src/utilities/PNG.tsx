@@ -11,6 +11,7 @@ import docsSource from '../assets/images/PNG/docsSource.png';
 import home from '../assets/images/PNG/home.png';
 import infoA from '../assets/images/PNG/infoA.png';
 import notFound from '../assets/images/PNG/notFound.png';
+import empty from '../assets/images/PNG/empty.png';
 
 
 import example from '../assets/images/PNG/exampleP.png';
@@ -18,6 +19,10 @@ import member1 from '../assets/images/PNG/member1.png';
 import member2 from '../assets/images/PNG/member2.png';
 import member3 from '../assets/images/PNG/member3.png';
 import member4 from '../assets/images/PNG/member4.png';
+
+
+//GIF_____________________________________________________________
+const gifLoading = require('../assets/images/PNG/loading.gif');
 
 export {  
     bgHome,
@@ -33,7 +38,8 @@ export {
     home,
     infoA,
     notFound,
-
+    gifLoading,
+    empty,
 
     example,
     member1,

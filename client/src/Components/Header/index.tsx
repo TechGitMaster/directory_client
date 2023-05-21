@@ -68,9 +68,7 @@ const Header2: React.FC = () => {
 
                     {/*____left____*/}
                     <div className='flex h-full leftN'>
-                        {/*<img src={ logo } className='lg:w-[55px] md:w-[55px] w-[45px] rounded-md' alt="logo" />*/}
-                        
-                        <div className='lg:w-[55px] md:w-[55px] w-[45px] h-full rounded-md bg-[gold]'></div>
+                        {<img src={ logo } className='lg:w-[50px] md:w-[55px] w-[40px] rounded-md' alt="logo" />}
 
                         <div className='lg:w-96 w-full h-full flex justify-between items-center ml-3 rounded-[20px] pl-3 pr-2 bg-white'>
                             <input type='text' placeholder='Search for your thesis' className='w-[87%] text-[15px] text-black outline-none'/>

@@ -9,6 +9,7 @@
 /* Set the default font families */
 html {
     font-family: 'Inter', 'Inria Serif', sans-serif;
+    scroll-behavior: smooth;
 }
 
 /* Set the serif font family for headings */
@@ -21,3 +22,4 @@ h1, h2, h3, h4, h5, h6 {
     background:url('./assets/images/PNG/bgHome.png') no-repeat fixed center center;
     background-size:cover;
 }
+

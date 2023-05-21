@@ -13,8 +13,8 @@ const NotFound: React.FC = () => {
                         </div>
                     </div>
                     <div className='lg:w-[50%] w-[100%]'>
-                        <p className='lg:hidden block text-[35px] font-bold leading-[50px] text-center'>Oops, <span className='text-[#1790E0]'>nothing</span> here...</p>
-                        <p className='lg:block hidden text-[55px] font-bold leading-[68px]'>Oops, <br/><span className='text-[#1790E0]'>nothing</span> here...</p>
+                        <p className='lg:hidden block text-[35px] font-bold leading-[50px] text-center'>Oops, <span className='text-[#D85900]'>nothing</span> here...</p>
+                        <p className='lg:block hidden text-[55px] font-bold leading-[68px]'>Oops, <br/><span className='text-[#D85900]'>nothing</span> here...</p>
 
                         <div className='flex lg:justify-start justify-center'>
                             <p className='lg:w-[80%] w-[95%] lg:text-left text-center  text-[15px] text-[#2B2929] mt-3'>Uh oh, we can’t seem to find the page you’re looking for. Try going back to previous page.</p>
@@ -22,7 +22,7 @@ const NotFound: React.FC = () => {
                         
                         <div className='flex lg:justify-start justify-center'>
                             <button onClick={ () => window.history.back() }
-                            className='lg:w-[28%] w-[50%] shadow-lg bg-[#1790E0] text-white text-[15px] px-[20px] py-[10px] rounded-[25px] mt-8'>Go Back</button>
+                            className='lg:w-[28%] w-[50%] shadow-lg bg-[#D85900] text-white text-[15px] px-[20px] py-[10px] rounded-[25px] mt-8'>Go Back</button>
                         </div>
                     </div>
                     <div className='w-[50%] lg:block hidden'>

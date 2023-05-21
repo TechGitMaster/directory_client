@@ -37,11 +37,11 @@ const About: React.FC = () => {
                 </div>
             </div>
             
-            <div className='bg-[#1790e0] px-3 py-9'>
+            <div className='bg-[#D85900] px-3 py-9'>
                 <div className='mx-auto max-w-[1250px] flex omD'>
                     <div className='w-[50%] py-3 womD'>
                         <p className='font-semibold lg:text-[28px] md:text-[28px] text-[23px] text-white mb-5'>Meet the team of the operation:</p>
-                        <p className='text-white text-[17px] infoomD'>The aim of our group is to design and develop a website to post the best research, and for all the  students who wants to search for the best research that been made by past researchers in this school. Included scopes:</p>
+                        <p className='text-white text-[17px] infoomD'>The aim of our school is to design and develop a website to post the best research, and for all the students who wants to search for the best research that been made by our past researchers in Village Montessori School and Colleges. Included scopes:</p>
                         <div className='m-5'>
                             <li className='text-white text-[17px] mb-4 infoomD'>To design and develop a module that will help the users to discover a specific research they want to know.</li>
                             <li className='text-white text-[17px] mb-4 infoomD'>To design and develop a module that will help the users to post and to express their emotions on those past researcher in the feedback feature of the website.</li>
