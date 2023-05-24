@@ -51,7 +51,7 @@ const responsiveDot = {
 };
 
 
-
+//This is for Arrow carousel__________________________________________________________
 export const CarouselArrow: React.FC = () => {
   return (
     <>
@@ -62,10 +62,12 @@ export const CarouselArrow: React.FC = () => {
             '.'.repeat(4).split('').map(a => 
               <div key={Math.random()} className='relative rounded-2xl overflow-hidden'>
                 <img src={ example } alt="topThesis" className='w-full lg:h-[530px] md:h-[530px] h-[430px] object-cover'/>
-                <div className='absolute w-full bottom-0 min-h-[100px] bg-[#1B1B1B] bg-opacity-50 p-6'>
-                  <p className='text-white lg:text-[20px] md:text-[20px] text-[17px] lg:w-[70%] md:w-[70%] w-[100%] font-inter font-medium mb-3'>Proposed systemized web-based academic thesis paper directory for s...</p>
-                  <button className='w-[159px] h-[41px] lg:text-[15px] md:text-[15px] text-[14px] flex items-center justify-center bg-[#FFF200] py-[11px] px-[20px] rounded-lg cursor-pointer'>Click to view</button>
-                </div>
+                {
+                  /*<div className='absolute w-full bottom-0 min-h-[100px] bg-[#1B1B1B] bg-opacity-50 p-6'>
+                    <p className='text-white lg:text-[20px] md:text-[20px] text-[17px] lg:w-[70%] md:w-[70%] w-[100%] font-inter font-medium mb-3'>Proposed systemized web-based academic thesis paper directory for s...</p>
+                    <button className='w-[159px] h-[41px] lg:text-[15px] md:text-[15px] text-[14px] flex items-center justify-center bg-[#FFF200] py-[11px] px-[20px] rounded-lg cursor-pointer'>Click to view</button>
+                  </div>*/
+                }
              </div>
             )
           }
@@ -75,6 +77,8 @@ export const CarouselArrow: React.FC = () => {
   )
 }
 
+
+//This is for DOT carousel__________________________________________________________
 export const CarouselsDot: React.FC = () => {
 
     const CustomDot = ({ onClick, active }:any) => (

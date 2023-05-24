@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { logo, search, microsoft, burger, docsSource, home, infoA, } from '../../utilities/PNG';
+import { logo, search, google, burger, docsSource, home, infoA, } from '../../utilities/PNG';
 import { useNavigate } from 'react-router-dom';
 import './index.css';
 
@@ -31,8 +31,8 @@ const Header1: React.FC = () => {
 
                     {/*____right____*/}
                     <div className='flex items-center p-4 bg-[#2A2A2C] rounded-lg cursor-pointer'>
-                        <img src={ microsoft } alt="microsoft" className='w-6 h-6 mr-3' />
-                        <p className='font-inter font-normal text-white text-[15px]'>Sign in with Microsoft</p>
+                        <img src={ google } alt="google" className='w-6 h-6 mr-3' />
+                        <p className='font-inter font-normal text-white text-[15px]'>Sign in with google</p>
                     </div>
                 </div>
             </div>
@@ -71,7 +71,7 @@ const Header2: React.FC = () => {
                         {<img src={ logo } className='lg:w-[50px] md:w-[55px] w-[40px] rounded-md' alt="logo" />}
 
                         <div className='lg:w-96 w-full h-full flex justify-between items-center ml-3 rounded-[20px] pl-3 pr-2 bg-white'>
-                            <input type='text' placeholder='Search for your thesis' className='w-[87%] text-[15px] text-black outline-none'/>
+                            <input type='text' placeholder='Search for your research' className='w-[87%] text-[15px] text-black outline-none'/>
                             <div className='bg-[#EDF0F5] rounded-[50%] p-1 cursor-pointer'>
                                 <img src={search} alt="search" className='lg:w-7 md:w-7 w-5 lg:h-6 md:h-6 h-5' />
                             </div>
@@ -88,8 +88,8 @@ const Header2: React.FC = () => {
 
                     {/*____right____*/}
                     <div className='flex items-center p-4 bg-white rounded-lg cursor-pointer rightN'>
-                        <img src={ microsoft } alt="microsoft" className='w-6 h-6 mr-3' />
-                        <p className='font-inter font-normal text-[15px]'>Sign in with Microsoft</p>
+                        <img src={ google } alt="google" className='w-6 h-6 mr-3' />
+                        <p className='font-inter font-normal text-[15px]'>Sign in with google</p>
                     </div>
 
                     {/*____Burger____*/}
@@ -116,7 +116,7 @@ const Header2: React.FC = () => {
                         <p onClick={ () => navigationFun('about') }
                         className='text-white text-[18px] flex items-center mb-7 cursor-pointer txtBurger'><img src={ infoA } alt="menu" className='w-6 h-6 mr-3'/> About</p>
                         <p 
-                        className='text-white text-[18px] flex items-center mb-7 cursor-pointer txtBurger'><img src={ microsoft  } alt="menu" className='w-6 h-6 mr-3' /> Sign in with microsoft</p>
+                        className='text-white text-[18px] flex items-center mb-7 cursor-pointer txtBurger'><img src={ google  } alt="menu" className='w-6 h-6 mr-3' /> Sign in with google</p>
                     </div>
                 </div>
             </div>

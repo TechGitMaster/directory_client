@@ -1,5 +1,5 @@
 import React from 'react';
-import { bookB, keyB, microB } from '../../utilities/PNG';
+import { bookB, keyB, googleB } from '../../utilities/PNG';
 import Footer from '../../Components/Footer';
 import { member1, member2, member3, member4 } from '../../utilities/PNG';
 import './index.css';
@@ -23,15 +23,15 @@ const About: React.FC = () => {
                         <img src={ keyB } alt="about" className='mx-auto h-[55px] imgG' />
                         <div className='pCIT'>
                             <p className='text-[16px] text-[#291943] font-semibold text-center mt-7 pC pCT'>Unlimited Access.</p>
-                            <p className='text-[15px] text-[#291943] font-medium text-center mt-4 pC pCI'>Unlimited access for all the documents once you sign in using Microsoft account in our website.</p>
+                            <p className='text-[15px] text-[#291943] font-medium text-center mt-4 pC pCI'>Unlimited access for all the documents once you sign in using google account in our website.</p>
                         </div>
                     </div>  
 
                     <div className='w-[33%] m-4 listOH'>
-                        <img src={ microB } alt="about" className='mx-auto h-[55px] imgG' />
+                        <img src={ googleB } alt="about" className='mx-auto h-[55px] imgG' />
                         <div className='pCIT'>
-                            <p className='text-[16px] text-[#291943] font-semibold text-center mt-7 pC pCT'>Sign in with Microsoft.</p>
-                            <p className='text-[15px] text-[#291943] font-medium text-center mt-4 pC pCI'>Our website is only accepting microsoft accounts for the students of this school.</p>
+                            <p className='text-[16px] text-[#291943] font-semibold text-center mt-7 pC pCT'>Sign in with google.</p>
+                            <p className='text-[15px] text-[#291943] font-medium text-center mt-4 pC pCI'>Our website is only accepting google accounts for the students of this school.</p>
                         </div>
                     </div>        
                 </div>
@@ -41,7 +41,7 @@ const About: React.FC = () => {
                 <div className='mx-auto max-w-[1250px] flex omD'>
                     <div className='w-[50%] py-3 womD'>
                         <p className='font-semibold lg:text-[28px] md:text-[28px] text-[23px] text-white mb-5'>Meet the team of the operation:</p>
-                        <p className='text-white text-[17px] infoomD'>The aim of our school is to design and develop a website to post the best research, and for all the students who wants to search for the best research that been made by our past researchers in Village Montessori School and Colleges. Included scopes:</p>
+                        <p className='text-white text-[17px] infoomD'>The aim of our group is to design and develop a website to post the best research, and for all the students who wants to search for the best research that been made by our past researchers in Village Montessori School and Colleges. Included scopes:</p>
                         <div className='m-5'>
                             <li className='text-white text-[17px] mb-4 infoomD'>To design and develop a module that will help the users to discover a specific research they want to know.</li>
                             <li className='text-white text-[17px] mb-4 infoomD'>To design and develop a module that will help the users to post and to express their emotions on those past researcher in the feedback feature of the website.</li>

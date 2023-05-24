@@ -2,9 +2,9 @@ import bgHome from '../assets/images/PNG/bgHome.png';
 import book from '../assets/images/PNG/book.png';
 import bookB from '../assets/images/PNG/bookB.png';
 import keyB from '../assets/images/PNG/keyB.png';
-import microB from '../assets/images/PNG/microB.png';
+import googleB from '../assets/images/PNG/googleB.png';
 import logo from '../assets/images/PNG/logo.png';
-import microsoft from '../assets/images/PNG/microsoft.png';
+import google from '../assets/images/PNG/google.png';
 import search from '../assets/images/PNG/search.png';
 import burger from '../assets/images/PNG/burger.png';
 import docsSource from '../assets/images/PNG/docsSource.png';
@@ -29,9 +29,9 @@ export {
     book,
     bookB,
     keyB,
-    microB,
+    googleB,
     logo,
-    microsoft,
+    google,
     search,
     burger,
     docsSource,

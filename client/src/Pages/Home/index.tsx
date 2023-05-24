@@ -30,9 +30,18 @@ const Home: React.FC = () => {
                 <p className='text-center text-[#291943] lg:text-[40px] md:text-[40px] text-[30px] font-inter font-bold'>Year-top Studies</p>
                 <p className='text-center lg:text-[20px] md:text-[20px] text-[17px] font-inter mt-[-5px]'>Our top research study documents</p>
                 <div className='mt-10'>
-                    <p className='text-black lg:text-[23px] md:text-[23px] text-[20px] font-semibold'>Top 3 research studies</p>
+                    {
+                        //<p className='text-black lg:text-[23px] md:text-[23px] text-[20px] font-semibold'>Top 3 research studies</p>
+                    }
                     <div className='py-2 z-3'>
                         <CarouselArrow />
+                    </div>
+                </div>
+
+                <div className='my-7'>
+                    <p className='text-black lg:text-[23px] md:text-[23px] text-[20px] font-semibold'>Overall Top Three Research</p>
+                    <div className='relative py-2'>
+                        <CarouselsDot />
                     </div>
                 </div>
 

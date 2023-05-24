@@ -1,5 +1,5 @@
 import React from 'react';
-import { microsoft } from '../../utilities/PNG';
+import { google } from '../../utilities/PNG';
 import { useNavigate } from 'react-router-dom';
 
 const Footer: React.FC = () => {
@@ -15,8 +15,8 @@ const Footer: React.FC = () => {
         <div className='bg-[#EFEFEF] pt-10'>
             <div className='flex justify-center'>
                 <div className='flex items-center p-4 bg-[#2A2A2C] rounded-lg'>
-                    <img src={ microsoft } alt="microsoft" className='w-5 h-5 mr-3' />
-                    <p className='font-inter text-white font-normal text-[15px]'>Powered by Microsoft</p>
+                    <img src={ google } alt="google" className='w-5 h-5 mr-3' />
+                    <p className='font-inter text-white font-normal text-[15px]'>Powered by google</p>
                 </div>
             </div>
 
