@@ -30,10 +30,14 @@ const database = async () => {
 }
 database();
 
+
+
 //this is only for local___________________________________
 /*mongoose.connection.once('open', () => { 
     app.listen(4000 || process.env.PORT)    
 });*/
+
+
 
 //this is only for vercel__________________________________
 module.exports = app
