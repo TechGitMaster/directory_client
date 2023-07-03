@@ -37,6 +37,7 @@ const DocResource = () => {
     //Get data_______________________________________
     useEffect(() => {
         setDataFetch('fetching');
+        setYearTop('new');
 
         let funcD = async () => {
 
