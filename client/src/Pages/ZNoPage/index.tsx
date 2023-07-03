@@ -1,11 +1,15 @@
 import React from 'react';
 import Footer from '../../Components/Footer';
 import { notFound } from '../../utilities/PNG';
+import { useOutletContext } from 'react-router-dom';
 
 const NotFound: React.FC = () => {
+    const { setSearch }: any = useOutletContext();
+
     return (
         <>
-            <div className='lg:pt-[140px] pt-[100px] pb-[70px]'>
+        <div onClick={() => setSearch(false)}>
+        <div className='lg:pt-[140px] pt-[100px] pb-[70px]'>
                 <div className='mx-auto px-5 max-w-[1250px] lg:flex items-center'>
                     <div className='lg:hidden block'>
                         <div className='flex justify-center'>
@@ -29,8 +33,9 @@ const NotFound: React.FC = () => {
                         <img src={ notFound } alt="404" className='w-full h-full'/>
                     </div>
                 </div>
-            </div>
-            <Footer />
+        </div>
+        <Footer />
+        </div>
         </>
     )
 }

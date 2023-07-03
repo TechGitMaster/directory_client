@@ -12,6 +12,13 @@ import home from '../assets/images/PNG/home.png';
 import infoA from '../assets/images/PNG/infoA.png';
 import notFound from '../assets/images/PNG/notFound.png';
 import empty from '../assets/images/PNG/empty.png';
+import imgFrontPDF from '../assets/images/PNG/imgFrontPDF.png'
+import noRecord from '../assets/images/PNG/noRecord.png'
+import searchFor from '../assets/images/PNG/searchFor.png'
+import checkMark from '../assets/images/PNG/checkMark.png'
+import goldStar from '../assets/images/PNG/goldStar.png'
+import whiteStar from '../assets/images/PNG/whiteStar.png'
+
 
 
 import example from '../assets/images/PNG/exampleP.png';
@@ -40,6 +47,12 @@ export {
     notFound,
     gifLoading,
     empty,
+    imgFrontPDF,
+    noRecord,
+    searchFor, 
+    checkMark,
+    goldStar,
+    whiteStar,
 
     example,
     member1,

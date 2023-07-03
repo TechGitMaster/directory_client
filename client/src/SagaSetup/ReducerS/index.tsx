@@ -1,10 +1,11 @@
-import { combineReducers } from '@reduxjs/toolkit';
-import { reducer1 } from '../../Redux/Reducer';
+import { ResourcesTitleCourse, TopOtherResearch, TopThreeeResearch } from '../../Redux/Reducer';
 
 //All imported reducers______________________________________________________
 
 const ReducerS = {
-    reducer1
+    ResourcesTitleCourse,
+    TopThreeeResearch,
+    TopOtherResearch
 }
 
 export default ReducerS;

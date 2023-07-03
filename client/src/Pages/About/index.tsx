@@ -3,11 +3,14 @@ import { bookB, keyB, googleB } from '../../utilities/PNG';
 import Footer from '../../Components/Footer';
 import { member1, member2, member3, member4 } from '../../utilities/PNG';
 import './index.css';
+import { useOutletContext } from 'react-router-dom';
 
 const About: React.FC = () => {
+    const { setSearch }: any = useOutletContext();
+
     return (
         <>
-            
+            <div onClick={() => setSearch(false)}>
             <div className='mx-auto max-w-[1250px] lg:pt-[115px] md:pt-[115px] pt-[100px] pb-5 px-3 mb-8 howiT'>
                 <p className='lg:text-[28px] md:text-[28px] text-[23px] text-[#291943] font-inter font-semibold mb-7'>See how it works:</p>
                 <div className='flex justify-center divH'>
@@ -50,17 +53,19 @@ const About: React.FC = () => {
                     </div>
                     <div className='w-[50%] womD'>
 
-                        <div className='block disPlayP'>
-                            <div className='flex justify-center items-center'>
-                                <div>
-                                    <img src={ member1 } alt="members" className='rounded-lg h-[266px] object-cover'/>
-                                </div>
-                                <div className='mx-4'>
-                                    <img src={ member2 } alt="members" className='rounded-lg mb-4 h-[199px] object-cover'/>
-                                    <img src={ member3 } alt="members" className='rounded-lg h-[199px] object-cover'/>
-                                </div>
-                                <div>
-                                    <img src={ member4 } alt="members" className='rounded-lg h-[266px] object-cover'/>
+                        <div className='block disPlayP h-[100%]'>
+                            <div className='h-[100%] flex justify-center items-center'>
+                                <div className='flex justify-center items-center'>
+                                    <div>
+                                        <img src={ member1 } alt="members" className='rounded-lg h-[266px] object-cover'/>
+                                    </div>
+                                    <div className='mx-4'>
+                                        <img src={ member2 } alt="members" className='rounded-lg mb-4 h-[199px] object-cover'/>
+                                        <img src={ member3 } alt="members" className='rounded-lg h-[199px] object-cover'/>
+                                    </div>
+                                    <div>
+                                        <img src={ member4 } alt="members" className='rounded-lg h-[266px] object-cover'/>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -78,6 +83,7 @@ const About: React.FC = () => {
             </div>
 
             <Footer />
+            </div>
         </>
     );
 }

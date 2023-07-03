@@ -2,13 +2,17 @@ import React from 'react';
 import { book } from '../../utilities/PNG';
 import '../../App.css';
 
-import { CarouselsDot, CarouselArrow } from './Carousel';
+import { CarouselsDotTopThree, CarouselsDotTopOther, CarouselArrow } from './Carousel';
 import Footer from '../../Components/Footer';
 
+import { useOutletContext } from 'react-router-dom';
+
 const Home: React.FC = () => {
+    const { setSearch }: any = useOutletContext(); 
+
     return (
         <>
-        <div>
+        <div onClick={() => setSearch(false)}>
         <div className='lg:h-[670px] md:h-[670px] h-[520px] lg:px-3 md:px-3 px-1 cssBG'>
             <div className='mx-auto max-w-[1250px] h-full flex items-center pt-10'>
                 <div>
@@ -25,7 +29,7 @@ const Home: React.FC = () => {
                 </div>
             </div>
         </div>
-        <div className='min-h-[300px] bg-white px-3'>
+        <div className='min-h-[300px] bg-[#F3F3F3] px-3'>
             <div className='mx-auto max-w-[1250px] py-[50px]'>
                 <p className='text-center text-[#291943] lg:text-[40px] md:text-[40px] text-[30px] font-inter font-bold'>Year-top Studies</p>
                 <p className='text-center lg:text-[20px] md:text-[20px] text-[17px] font-inter mt-[-5px]'>Our top research study documents</p>
@@ -41,14 +45,14 @@ const Home: React.FC = () => {
                 <div className='my-7'>
                     <p className='text-black lg:text-[23px] md:text-[23px] text-[20px] font-semibold'>Overall Top Three Research</p>
                     <div className='relative py-2'>
-                        <CarouselsDot />
+                        <CarouselsDotTopThree />
                     </div>
                 </div>
 
                 <div className='my-7'>
                     <p className='text-black lg:text-[23px] md:text-[23px] text-[20px] font-semibold'>Other selected research studies</p>
                     <div className='relative py-2'>
-                        <CarouselsDot />
+                        <CarouselsDotTopOther />
                     </div>
                 </div>
             </div>
