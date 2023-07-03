@@ -100,7 +100,7 @@ const Header2: React.FC<any> = ({ searchs, setSearch }) => {
 
                 let obj = {
                     method: "GET",
-                    url: 'http://localhost:4000/documents_Title',
+                    url: 'https://directory-client-server.vercel.app/documents_Title',
                     params: { /* this is for GET request */ },
                     data: { /* this is for POST request */ },
                     headers: {

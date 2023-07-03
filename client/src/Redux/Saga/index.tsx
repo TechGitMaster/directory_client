@@ -7,7 +7,7 @@ function* ResourcesTitleCourses({ condition, titleCourse, skip }: any){
     try{
         let obj = {
             method: 'GET',
-            url: 'http://localhost:4000/getBy_CourseTitle',
+            url: 'https://directory-client-server.vercel.app/getBy_CourseTitle',
             params: { condition: condition, titleCourse: titleCourse, skip: skip /* use this when your method is GET */},
             data: { /* use this when your method is POST */ },
             headers: {
@@ -33,7 +33,7 @@ function* TopThreeeResearchs({ type }: any){
     try{
         let obj = {
             method: 'GET',
-            url: 'http://localhost:4000/getTopTreeResources',
+            url: 'https://directory-client-server.vercel.app/getTopTreeResources',
             params: { /* This is for GET request */ },
             data: { /* this is for POST request */ },
             headers: {
@@ -59,7 +59,7 @@ function* TopOtherResearchs({ type }: any){
     try{
         let obj = {
             method: 'GET',
-            url: 'http://localhost:4000/getTopOthersResources',
+            url: 'https://directory-client-server.vercel.app/getTopOthersResources',
             params: { /* This is for GET request */ },
             data: { /* this is for POST request */ },
             headers: {

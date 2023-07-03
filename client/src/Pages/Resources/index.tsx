@@ -95,7 +95,7 @@ const Resources: React.FC = () => {
             try{
                 let obj = {
                     method: 'GET',
-                    url: 'http://localhost:4000/get_resources',
+                    url: 'https://directory-client-server.vercel.app/get_resources',
                     params: { course: courseS.current.value, search: searchS.current.value, 
                         year: yearS.current.value, skip: 0 },
                     data: { /*this is for req.body*/ },
@@ -187,7 +187,7 @@ const Resources: React.FC = () => {
         try{
             let obj = {
                 method: 'GET',
-                url: 'http://localhost:4000/get_resources',
+                url: 'https://directory-client-server.vercel.app/get_resources',
                 params: { course: searchCache[0], search: searchCache[1], year: searchCache[2], skip: data },
                 data: { /*this is for req.body*/ },
                 headers: {
