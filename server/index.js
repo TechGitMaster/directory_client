@@ -9,9 +9,9 @@ const App = require('./App');
 //This is just for second option if header in vercel.json have an error when uploading to vercel________________________
 //this is only for local___________________________________
 const cors = require('cors');
-app.use(cors({
+/*app.use(cors({
     origin: ['http://localhost:3000', 'https://thesisary.vercel.app']
-}));
+}));*/
 
 
 
