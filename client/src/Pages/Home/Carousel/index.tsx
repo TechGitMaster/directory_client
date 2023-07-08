@@ -149,8 +149,8 @@ export const CarouselsDotTopThree: React.FC = () => {
                   customDot={<CustomDot />}>       
                 {
                   selectorTopThree.res.map((a: any, i: number) => 
-                    <div key={ Math.random() } className='p-3'>
-                      <div className='rounded-2xl overflow-hidden shadow-lg'>
+                    <div key={ Math.random() } className='p-3 flex h-[100%]'>
+                      <div className='rounded-2xl overflow-hidden flex-1 shadow-lg'>
                         <div className='w-[100%] h-[200px] rounded-l-md bg-white overflow-hidden relative' >
                           <img src={ imgFrontPDF } alt="frontPage" className='w-full h-full absolute z-20' />
                           <div className='blur-sm h-[300px]'>
@@ -164,10 +164,10 @@ export const CarouselsDotTopThree: React.FC = () => {
                           </div>
                         </div>
 
-                        <div className='p-4 bg-[#2A2A2C]'>
-                          <p className='lg:text-[18px] md:text-[18px] text-[16px] text-[#FFF200] font-inter font-medium mb-3'>{a.title}</p>
-                          <p className='text-white'><span className='font-semibold'>Track:</span> {a.course}</p>
-                          <p className='text-white'><span className='font-semibold'>Student Member:</span> {parseInt(a.member) > 10 ? a.member:`0${a.member}`}</p>
+                        <div className='p-4 bg-[#2A2A2C] h-[100%]'>
+                          <p className='md:text-[16px] text-[15px] text-[#FFF200] font-inter font-medium mb-3 line-clamp-3'>{a.title}</p>
+                          <p className='text-white text-[15px]'><span className='font-semibold'>Track:</span> {a.course}</p>
+                          <p className='text-white text-[15px]'><span className='font-semibold'>Student Member:</span> {parseInt(a.member) > 10 ? a.member:`0${a.member}`}</p>
                   
                           <div className='flex justify-center mt-7 mb-3'>
                             <button onClick={() => clickDocu(selectorTopThree.res[i]._id)}
@@ -258,8 +258,8 @@ export const CarouselsDotTopOther: React.FC = () => {
                 customDot={<CustomDot />}>       
               {
                 selectorTopOther.res.map((a:any, i: number) => 
-                  <div key={ Math.random() } className='p-3'>
-                    <div className='rounded-2xl overflow-hidden shadow-lg'>
+                  <div key={ Math.random() } className='p-3 flex h-[100%]'>
+                    <div className='rounded-2xl overflow-hidden flex-1 shadow-lg'>
                       <div className='w-[100%] h-[200px] rounded-l-md bg-white overflow-hidden relative' >
                         <img src={ imgFrontPDF } alt="frontPage" className='w-full h-full absolute z-20' />
                         <div className='blur-sm h-[300px]'>
@@ -273,10 +273,10 @@ export const CarouselsDotTopOther: React.FC = () => {
                         </div>
                       </div>
 
-                      <div className='p-4 bg-[#2A2A2C]'>
-                        <p className='lg:text-[18px] md:text-[18px] text-[16px] text-[#FFF200] font-inter font-medium mb-3'>{a.title}</p>
-                        <p className='text-white'><span className='font-semibold'>Track:</span> {a.course}</p>
-                        <p className='text-white'><span className='font-semibold'>Student Member:</span> {parseInt(a.member) > 10 ? a.member:`0${a.member}`}</p>
+                      <div className='p-4 bg-[#2A2A2C] h-[100%]'>
+                        <p className='md:text-[16px] text-[15px] text-[#FFF200] font-inter font-medium mb-3 line-clamp-3'>{a.title}</p>
+                        <p className='text-white text-[15px]'><span className='font-semibold'>Track:</span> {a.course}</p>
+                        <p className='text-white text-[15px]'><span className='font-semibold'>Student Member:</span> {parseInt(a.member) > 10 ? a.member:`0${a.member}`}</p>
                 
                         <div className='flex justify-center mt-7 mb-3'>
                           <button onClick={() => clickDocu(selectorTopOther.res[i]._id)}
