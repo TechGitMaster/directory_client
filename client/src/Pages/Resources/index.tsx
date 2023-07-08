@@ -219,9 +219,9 @@ const Resources: React.FC = () => {
         {/*___Header___*/}
         <div className='bg-[#D85900] px-4'>
                 <div className='mx-auto max-w-[1250px] pt-[115px] pb-[50px]'>
-                    <p className='lg:text-[30px] md:text-[30px] text-[26px] font-bold text-center text-white'>Find Study Resources by Course</p>
+                    <p className='lg:text-[30px] md:text-[30px] text-[26px] font-bold text-center text-white'>Find Study Resources by Track and Year</p>
                     <div className='flex justify-center mt-3 mb-8'>
-                        <p className='lg:w-[65%] md:w-[65%] w-[90%] lg:text-[15px] md:text-[15px] text-[14px] text-white text-center'>Find the study resources you need for your research. Resources page will provide a available study documents by courses that will help you to study there research.</p>
+                        <p className='lg:w-[65%] md:w-[65%] w-[90%] lg:text-[15px] md:text-[15px] text-[14px] text-white text-center'>Find the study resources you need for your research. Resources page will provide an available study documents by track and year that will help you to study their research.</p>
                     </div>
 
                    {/*__Search bar__*/}
