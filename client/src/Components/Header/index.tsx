@@ -71,6 +71,7 @@ const Header2: React.FC<any> = ({ searchs, setSearch, accessAlert, setAccessAler
     const [dataAccount, setDataAccount] = useState<any>();
     const [signinClick, setSigninClick] = useState<boolean>(false);
     const [countDown, setCountDown] = useState(5);
+    const [logout, setLogout] = useState(false);
 
     const navigationFun = (str: string) => {
         navigate(`/${str}`);
@@ -157,7 +158,7 @@ const Header2: React.FC<any> = ({ searchs, setSearch, accessAlert, setAccessAler
                     setCountDown((a) => a-1);
                 }else{
                     clearInterval(interval)
-                    window.location.assign('http://localhost:3000/');
+                    window.location.assign('https://thesisary.vercel.app');
                 }
             }, 1000)
         }
@@ -213,6 +214,12 @@ const Header2: React.FC<any> = ({ searchs, setSearch, accessAlert, setAccessAler
         }
 
     }   
+
+    //Logout_______________________________________________
+    const logoutF = () => {
+        localStorage.removeItem('_SClrTk');
+        window.location.assign('https://thesisary.vercel.app')
+    }
 
     return (
         <>
@@ -318,7 +325,7 @@ const Header2: React.FC<any> = ({ searchs, setSearch, accessAlert, setAccessAler
                     {/*____Signed account____*/}
                     {
                         signIns ?
-                        <div className='flex items-center pl-3 bg-[#D85900] rounded-lg cursor-pointer overflow-hidden rightN select-none relative'>
+                        <div onClick={() => setLogout((a) => !a)} className='flex items-center pl-3 bg-[#D85900] rounded-lg cursor-pointer rightN select-none relative'>
                             <img src={dataAccount.picture_URI} onError={() => alert()} alt="user" 
                             className='h-7 rounded-[50%] mr-3 my-6' />
                             <div className='text-white my-6 '>
@@ -328,6 +335,16 @@ const Header2: React.FC<any> = ({ searchs, setSearch, accessAlert, setAccessAler
                             <div className='bg-white h-[81%] flex items-center p-2 ml-3 mr-1 rounded-r-md'>
                                 <img src={ google } alt="google" className='h-5 relative' />
                             </div>
+                            
+                            {/*___Logout___*/}
+                            {
+                                logout ? 
+                                <div onClick={ logoutF } className='absolute left-0 bottom-[-45px] w-full h-[40px] bg-[#ffffff] shadow-lg rounded-lg flex items-center'>
+                                    <p className='w-full cursor-pointer text-center text-[15px]'>Log out</p>
+                                </div>
+                                :
+                                ''
+                            }
                         </div>
                         :
                         ''
@@ -441,9 +458,9 @@ const Header2: React.FC<any> = ({ searchs, setSearch, accessAlert, setAccessAler
                     </div>
 
                     <div className='sm:relative absolute bottom-[20px] left-0 sm:top-2 mb-4 px-5 flex justify-center'>
-                        <p className='sm:w-[90%] text-[#ECECEC] text-[15px] text-center'>By continuing you agree to Thesisary’s 
-                        <a href='https://privacy-policysthesisary.tiiny.site/' className='font-bold underline text-white cursor-pointer'> Privacy policy </a> 
-                        and acknowledge you’ve read our privacy policy</p>
+                        <p className='sm:w-[90%] text-[#ECECEC] text-[15px] text-center'>By continuing you agree to Thesisary's  
+                        <span onClick={ () => window.open('https://privacy-policysthesisary.tiiny.site/', '_blank') } className='font-bold underline text-white cursor-pointer'> Privacy policy </span> 
+                        and acknowledge you've read our privacy policy</p>
                     </div>
                 </div>
             </div>
@@ -522,7 +539,7 @@ const Header2: React.FC<any> = ({ searchs, setSearch, accessAlert, setAccessAler
                             {/*____Signed account____*/}
                             {
                                 signIns ?
-                                <div className='flex items-center justify-center pl-3 bg-[#D85900] rounded-lg cursor-pointer overflow-hidden select-none relative'>
+                                <div onClick={() => setLogout((a) => !a)} className='flex items-center justify-center pl-3 bg-[#D85900] rounded-lg cursor-pointer select-none relative'>
                                     <img src={dataAccount.picture_URI} alt="user" 
                                     className='h-7 rounded-[50%] mr-3 my-2' />
                                     <div className='text-white my-2'>
@@ -532,6 +549,16 @@ const Header2: React.FC<any> = ({ searchs, setSearch, accessAlert, setAccessAler
                                     <div className='bg-white flex items-center p-2 ml-3 mr-1 rounded-md'>
                                         <img src={ google } alt="google" className='h-5 relative' />
                                     </div>
+
+                                    {/*___Logout___*/}
+                                    {
+                                        logout ? 
+                                        <div onClick={ logoutF } className='absolute left-0 bottom-[-50px] w-full h-[40px] bg-[#ffffff] shadow-lg rounded-lg flex items-center'>
+                                            <p className='w-full cursor-pointer text-center text-[15px]'>Log out</p>
+                                        </div>
+                                        :
+                                        ''
+                                    }
                                 </div>
                                 :
                                 ''
