@@ -14,6 +14,7 @@ import About from './Pages/About';
 import Resources from './Pages/Resources';
 import NotFound from './Pages/ZNoPage';
 import DocResource from './Pages/DocResource';
+import TermsOfService from './Pages/TermsOfService';
 
 const root = ReactDOMClient.createRoot(document.querySelector('#root') as HTMLDivElement);
 
@@ -32,6 +33,8 @@ root.render(
                         <Route path='/Resources' element={<Resources />} />
                         <Route path='*' element={<NotFound />} />
                     </Route>
+
+                    <Route path='/termsService' element={ <TermsOfService /> }></Route>
                 </Routes>
             </BrowserRouter>
         </PersistGate>

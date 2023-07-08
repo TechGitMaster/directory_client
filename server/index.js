@@ -41,7 +41,6 @@ database();
 });*/
 
 
-
 //this is only for vercel__________________________________
 module.exports = app
 

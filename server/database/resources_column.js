@@ -2,9 +2,8 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 module.exports = () => {
-    let schema_column = new Schema();
 
-    schema_column = new Schema({
+    let schema_column = new Schema({
         title: { type: String, required: true },
         member: { type: String, required: true },
         year: { type: String, required: true },

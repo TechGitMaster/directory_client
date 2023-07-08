@@ -5,7 +5,7 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { example, gifLoading, imgFrontPDF, empty } from '../../../utilities/PNG';
 import { GET_THREE_RESOURCE, GET_TOPOTHERS_RESOURCE } from '../../../Redux/Actions';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useOutletContext } from 'react-router-dom';
 
 
 import DisableScrollPlugin from '../../../Components/DisableScrollPDF';
@@ -14,6 +14,7 @@ import { Viewer, Worker } from '@react-pdf-viewer/core'; // install this library
 // Import the styles
 import '@react-pdf-viewer/core/lib/styles/index.css';
 import '@react-pdf-viewer/default-layout/lib/styles/index.css';
+import Authentication from '../../../Components/Authentication';
 
 const responsiveArrow = {
   superLargeDesktop: {
@@ -91,6 +92,7 @@ export const CarouselArrow: React.FC = () => {
 export const CarouselsDotTopThree: React.FC = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const { setAccessAlert } = useOutletContext<any>();
     const selectorTopThree = useSelector((state:any) => state.TopThreeeResearch);
 
     const CustomDot = ({ onClick, active }:any) => (
@@ -116,12 +118,17 @@ export const CarouselsDotTopThree: React.FC = () => {
     dispatch({ type: GET_THREE_RESOURCE });
    }, [])
 
-   const clickDocu = (_id: string) => {
-    window.scrollTo(0, 0)
-
-    setTimeout(() => {
-      navigate(`/document/${_id}`);
-    }, 500)
+   const clickDocu = async (_id: string) => {
+    const auth = await Authentication();
+    if(auth[0]){
+      window.scrollTo(0, 0)
+  
+      setTimeout(() => {
+        navigate(`/document/${_id}`);
+      }, 500)
+    }else{
+      setAccessAlert('view');
+    }
    }
   
     return (
@@ -193,6 +200,7 @@ export const CarouselsDotTopThree: React.FC = () => {
 export const CarouselsDotTopOther: React.FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { setAccessAlert } = useOutletContext<any>();
   const selectorTopOther = useSelector((state: any) => state.TopOtherResearch);
 
   const CustomDot = ({ onClick, active }:any) => (
@@ -218,12 +226,17 @@ export const CarouselsDotTopOther: React.FC = () => {
   dispatch({ type: GET_TOPOTHERS_RESOURCE });
  }, [])
 
- const clickDocu = (_id: string) => {
-  window.scrollTo(0, 0)
+ const clickDocu = async (_id: string) => {
+  const auth = await Authentication();
+  if(auth[0]){
+    window.scrollTo(0, 0)
 
-  setTimeout(() => {
-    navigate(`/document/${_id}`);
-  }, 500)
+    setTimeout(() => {
+      navigate(`/document/${_id}`);
+    }, 500)
+  }else{
+    setAccessAlert('view');
+  }
  }
 
   return (

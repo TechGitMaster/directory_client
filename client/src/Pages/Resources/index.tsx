@@ -13,9 +13,10 @@ import { Viewer, Worker } from '@react-pdf-viewer/core'; // install this library
 import '@react-pdf-viewer/core/lib/styles/index.css';
 import '@react-pdf-viewer/default-layout/lib/styles/index.css';
 import DisableScrollPlugin from '../../Components/DisableScrollPDF';
+import Authentication from '../../Components/Authentication';
 
 const Resources: React.FC = () => {
-    const { setSearch }: any = useOutletContext();
+    const { setSearch, setAccessAlert }: any = useOutletContext();
     const navigate = useNavigate();
 
     const courses: Array<string> = ['STEM', 'ABM', 'HUMSS', 'GAS', 'I.C.T', 'Home Economics'];
@@ -118,12 +119,17 @@ const Resources: React.FC = () => {
     }
 
 
-    const clickDocu = (_id: string) => {
-        window.scrollTo(0, 0)
+    const clickDocu = async (_id: string) => {
+        const auth = await Authentication();
+        if(auth[0]){
+            window.scrollTo(0, 0)
     
-        setTimeout(() => {
-          navigate(`/document/${_id}`);
-        }, 500)
+            setTimeout(() => {
+              navigate(`/document/${_id}`);
+            }, 500)
+        }else{
+            setAccessAlert('view');
+        }
     }
 
 
@@ -303,7 +309,7 @@ const Resources: React.FC = () => {
                                         stateHandle.data.map((a:any) => 
                                         <div className='pr-3 mb-3 flex'>
                                             <div key={Math.random()} onClick={() => clickDocu(a._id)}
-                                             className='w-full flex-1 rounded-md overflow-hidden bg-[#2A2A2C] cursor-pointer pb-5'>
+                                             className='w-full flex-1 rounded-md overflow-hidden bg-[#2A2A2C] cursor-pointer pb-5 shadow-md'>
                                                 
                                                 <div className='w-[100%] h-[200px] mb-3 bg-white overflow-hidden relative' >
                                                   <img src={ imgFrontPDF } alt="frontPage" className='w-full h-full absolute z-20' />

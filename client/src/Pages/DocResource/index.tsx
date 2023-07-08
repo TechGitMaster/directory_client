@@ -12,10 +12,11 @@ import { Viewer, Worker, PdfJs } from '@react-pdf-viewer/core';
 import '@react-pdf-viewer/core/lib/styles/index.css';
 import '@react-pdf-viewer/default-layout/lib/styles/index.css';
 import { toolbarPlugin } from '@react-pdf-viewer/toolbar';
+import Authentication from '../../Components/Authentication';
 
 const DocResource = () => {
     const { id } = useParams();
-    const { setSearch } = useOutletContext<any>();
+    const { setSearch, setAccessAlert } = useOutletContext<any>();
 
     const [dataFetch, setDataFetch] = useState('fetching');
     const [yearTop, setYearTop] = useState('new');
@@ -39,37 +40,46 @@ const DocResource = () => {
         setDataFetch('fetching');
         setYearTop('new');
 
-        let funcD = async () => {
+        const fetch = async () => {
+            const auth = await Authentication();
+            if(auth[0]){
+                let funcD = async () => {
 
-          try{
-
-              let obj = {
-                  method: 'POST',
-                  url: 'https://directory-client-server.vercel.app/getSelected',
-                  params: {/* This is for GET method */},
-                  data: { id: id },
-                  headers: {
-                      'Content-type': 'application/json'
+                    try{
+          
+                        let obj = {
+                            method: 'POST',
+                            url: 'https://directory-client-server.vercel.app/getSelected',
+                            params: {/* This is for GET method */},
+                            data: { id: id },
+                            headers: {
+                                'Content-type': 'application/json'
+                            }
+                        }
+          
+                        let { data } = await axios(obj)
+          
+                        if(data.success){
+                          setDataFetch(data.data.length > 0 ? 'done':'error');
+                          setData(data.data);
+                          setYearTop(data.data.length > 0 ? data.data[0].selectedTop:'new');
+                        }else{
+                          setDataFetch('error');
+                        }
+                    }catch(e){
+                      setDataFetch('error');
+                      console.log(e);
+                    }
+          
                   }
-              }
-
-              let { data } = await axios(obj)
-
-              if(data.success){
-                setDataFetch(data.data.length > 0 ? 'done':'error');
-                setData(data.data);
-                setYearTop(data.data.length > 0 ? data.data[0].selectedTop:'new');
-              }else{
-                setDataFetch('error');
-              }
-          }catch(e){
-            setDataFetch('error');
-            console.log(e);
-          }
-
+          
+                  funcD();
+            }else{
+                setAccessAlert('timeout');
+            }
         }
 
-        funcD();
+        fetch();
 
     }, [id])
 

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { GET_RESOURCES } from '../../Redux/Actions';
 import { empty, gifLoading, imgFrontPDF } from '../../utilities/PNG';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useOutletContext } from 'react-router-dom';
 
 
 // Import the main component
@@ -11,11 +11,13 @@ import { Viewer, Worker } from '@react-pdf-viewer/core'; // install this library
 import '@react-pdf-viewer/core/lib/styles/index.css';
 import '@react-pdf-viewer/default-layout/lib/styles/index.css';
 import DisableScrollPlugin from '../../Components/DisableScrollPDF';
+import Authentication from '../Authentication';
 
 
 const ResourceOther = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const { setAccessAlert } = useOutletContext<any>()
     const selector = useSelector((a:any) => a.ResourcesTitleCourse);
 
     const [titleCourses, setTitleCourses] = useState<boolean>(true);
@@ -45,12 +47,17 @@ const ResourceOther = () => {
     }
 
 
-    const clickDocu = (_id: string) => {
-        window.scrollTo(0, 0)
+    const clickDocu = async (_id: string) => {
+        const auth = await Authentication();
+        if(auth[0]){
+            window.scrollTo(0, 0)
     
-        setTimeout(() => {
-          navigate(`/document/${_id}`);
-        }, 500)
+            setTimeout(() => {
+              navigate(`/document/${_id}`);
+            }, 500)
+        }else{
+            setAccessAlert('view');
+        }
     }
 
 

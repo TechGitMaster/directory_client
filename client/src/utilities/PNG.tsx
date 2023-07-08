@@ -18,7 +18,8 @@ import searchFor from '../assets/images/PNG/searchFor.png'
 import checkMark from '../assets/images/PNG/checkMark.png'
 import goldStar from '../assets/images/PNG/goldStar.png'
 import whiteStar from '../assets/images/PNG/whiteStar.png'
-
+import thesisaryWord from '../assets/images/PNG/ThesisaryWord.png'
+import alertAccess from '../assets/images/PNG/alertAccess.png'
 
 
 import example from '../assets/images/PNG/exampleP.png';
@@ -53,6 +54,9 @@ export {
     checkMark,
     goldStar,
     whiteStar,
+    thesisaryWord,
+    alertAccess,
+    
 
     example,
     member1,

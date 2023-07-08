@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { logo, search, google, burger, docsSource, home, infoA, searchFor, noRecord, gifLoading, } from '../../utilities/PNG';
+import { logo, search, google, burger, docsSource, home, infoA, searchFor, noRecord, gifLoading, 
+    thesisaryWord, alertAccess } from '../../utilities/PNG';
 import { useNavigate } from 'react-router-dom';
 import MiniSearch from 'minisearch'
 import './index.css';
 import axios from 'axios';
+import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google'
+import jwtDecode from 'jwt-decode';
+import Authentication from '../Authentication';
 
 const Header1: React.FC = () => {
     return (
@@ -44,7 +48,7 @@ const Header1: React.FC = () => {
 }
 
 
-const Header2: React.FC<any> = ({ searchs, setSearch }) => {
+const Header2: React.FC<any> = ({ searchs, setSearch, accessAlert, setAccessAlert }) => {
     const navigate = useNavigate();
     const [menu, setMenu] = useState<boolean>(false);
     const [innerWidth, setInnerWidth] = useState<any>(0);
@@ -62,6 +66,11 @@ const Header2: React.FC<any> = ({ searchs, setSearch }) => {
             boost: { title: 2 } 
         }
     }))
+
+    const [signIns, setSignIns] = useState<boolean>(false);
+    const [dataAccount, setDataAccount] = useState<any>();
+    const [signinClick, setSigninClick] = useState<boolean>(false);
+    const [countDown, setCountDown] = useState(5);
 
     const navigationFun = (str: string) => {
         navigate(`/${str}`);
@@ -85,6 +94,15 @@ const Header2: React.FC<any> = ({ searchs, setSearch }) => {
         setTypingTimeout(timeout);
     }
 
+    let obj = {
+        method: "GET",
+        url: '',
+        params: { /* this is for GET request */ },
+        data: { /* this is for POST request */ },
+        headers: {
+            'Content-type': 'application/json'
+        }
+    }
 
     useEffect(() => {
         setInnerWidth(window.innerWidth); 
@@ -94,19 +112,21 @@ const Header2: React.FC<any> = ({ searchs, setSearch }) => {
         });
 
 
-        const getTitle = async () => {
-            //Get all documents title_________________________________________
-            try{
+        //Auth____________________________________________________________
+        const authF = async () => {
+            const auth = await Authentication();
+            if(auth[0]){
+                setSignIns(true);
+                setDataAccount(auth[1]);
+            }
+        }
 
-                let obj = {
-                    method: "GET",
-                    url: 'https://directory-client-server.vercel.app/documents_Title',
-                    params: { /* this is for GET request */ },
-                    data: { /* this is for POST request */ },
-                    headers: {
-                        'Content-type': 'application/json'
-                    }
-                }
+        //Get all documents title_________________________________________
+        const getTitle = async () => {
+            try{
+                
+                obj.method = 'GET';
+                obj.url = 'https://directory-client-server.vercel.app/documents_Title';
 
                 let { data } = await axios(obj);
 
@@ -120,21 +140,79 @@ const Header2: React.FC<any> = ({ searchs, setSearch }) => {
             }
         }
 
+        authF();
         getTitle();
 
     }, []);
 
 
+    //Alert timeout_________________________________________________
+    useEffect(() =>{
+        if(accessAlert === 'timeout'){
+            setCountDown(5);
+            let count = 5;
+            let interval = setInterval(() => {
+                if(count > 0){
+                    count -= 1;
+                    setCountDown((a) => a-1);
+                }else{
+                    clearInterval(interval)
+                    window.location.assign('http://localhost:3000/');
+                }
+            }, 1000)
+        }
+    }, [accessAlert])
+
+
     //Click selected text title_____________________________________
     const clickDocu = (_id: string) => {
-        setTimeout(() => {
-            setSearch(false);
-            setSearchText("");
-            navigate(`/document/${_id}`);
+        setTimeout(async () => {
+            const auth = await Authentication();
+            if(auth[0]){
+                setSearch(false);
+                setSearchText("");
+                navigate(`/document/${_id}`);   
+            }else{
+                setAccessAlert('view')
+            }
         }, 100)
     }
 
 
+    //Sign in_________________________________________________________
+    const signIn_Google = async (e: any) => {
+        const dataObj = {
+            email: e.email,
+            fullName: e.name,
+            familyName: e.family_name, 
+            givenName: e.given_name,
+            picture_URI: e.picture
+        }
+
+        try{
+            obj.method = 'POST';
+            obj.url = 'https://directory-client-server.vercel.app/signIn' 
+            obj.data = dataObj;
+
+            const { data } = await axios(obj);
+
+            if(data.success){
+                localStorage.setItem('_SClrTk', data.token);
+                const auth = await Authentication();
+
+                if(auth[0]){
+                    window.location.reload();
+                }else{
+                    alert('Check your Internet connection.');
+                }
+            }else{
+                alert('Check your Internet connection.');
+            }
+        }catch(e){
+            alert('Check your Internet connection.');
+        }
+
+    }   
 
     return (
         <>
@@ -225,12 +303,37 @@ const Header2: React.FC<any> = ({ searchs, setSearch }) => {
                     </div>
 
                     {/*____right____*/}
-                    <div className='flex items-center p-4 bg-white rounded-lg cursor-pointer rightN'>
-                        <img src={ google } alt="google" className='w-6 h-6 mr-3' />
-                        <p className='font-inter font-normal text-[15px]'>Sign in with google</p>
-                    </div>
+                    {/*____Sign in____*/}
+                    {
+                        !signIns ?
+                        <div onClick={() => setSigninClick(true)}
+                            className='flex items-center p-4 bg-white rounded-lg cursor-pointer overflow-hidden rightN select-none relative'>
+                            <img src={ google } alt="google" className='w-6 h-6 mr-3' />
+                            <p className='font-inter font-normal text-[15px]'>Sign in with google</p>
+                        </div>
+                        :
+                        ''
+                    }
 
-                    {/*____Burger____*/}
+                    {/*____Signed account____*/}
+                    {
+                        signIns ?
+                        <div className='flex items-center pl-3 bg-[#D85900] rounded-lg cursor-pointer overflow-hidden rightN select-none relative'>
+                            <img src={dataAccount.picture_URI} onError={() => alert()} alt="user" 
+                            className='h-7 rounded-[50%] mr-3 my-6' />
+                            <div className='text-white my-6 '>
+                                <p className='font-normal max-w-[150px] whitespace-nowrap overflow-hidden overflow-ellipsis text-[14px]'>Sign in as {dataAccount.givenName}</p>
+                                <p className='-mt-1 font-light max-w-[150px] whitespace-nowrap overflow-hidden overflow-ellipsis text-[12px]'>{dataAccount.email}</p>
+                            </div>
+                            <div className='bg-white h-[81%] flex items-center p-2 ml-3 mr-1 rounded-r-md'>
+                                <img src={ google } alt="google" className='h-5 relative' />
+                            </div>
+                        </div>
+                        :
+                        ''
+                    }
+
+                    {/*____Burger____*/} 
                     <div className='h-full cursor-pointer burger' onClick={ () => setMenu(true) }>
                         <div className='h-full flex items-center'>
                             <img src={burger} alt="burger" className='w-[33px] h-[32px]'/>
@@ -310,6 +413,86 @@ const Header2: React.FC<any> = ({ searchs, setSearch }) => {
             ''
         }
 
+
+        {/*____Sign up with Google Login privacy____*/}
+        {
+            signinClick ? 
+            <div className='fixed w-full h-[100vh] bg-black bg-opacity-20 sm:flex sm:px-5 justify-center items-center signin'>
+                <div className='sm:w-[520px] sm:min-h-[200px] w-full min-h-full p-10 rounded-md bg-[#D85900] shadow-lg relative'>
+                    <div className='flex justify-end'>
+                        <p className='text-white text-[25px] cursor-pointer' onClick={() => setSigninClick(false)}>X</p>
+                    </div>
+                    <img src={ thesisaryWord } alt="thesisary" className='mx-auto h-[70px]' />
+                    <p className='text-[#ECECEC] text-[15px] text-center'>Sign in to access full documentation of the site</p>
+
+                    <div className='mx-auto sm:w-[60%] flex items-center justify-center p-3 my-14 bg-white rounded-lg cursor-pointer overflow-hidden select-none relative'>
+                        <img src={ google } alt="google" className='w-6 h-6 mr-3' />
+                        <p className='font-inter font-normal text-[15px]'>Continue with google</p>
+
+                        <div className='w-full h-full absolute left-0 top-0 flex justify-center items-center opacity-0'>
+                            <GoogleOAuthProvider clientId='932871422101-n947707985vdci1bnqulmqbjc90j306j.apps.googleusercontent.com'>         
+                                <GoogleLogin 
+                                    width='3000'
+                                    onSuccess={(e: any) => signIn_Google(jwtDecode(e.credential)) }
+                                    onError={() => console.log('LOGINN ERROR')}
+                                />    
+                            </GoogleOAuthProvider>
+                        </div>
+                    </div>
+
+                    <div className='sm:relative absolute bottom-[20px] left-0 sm:top-2 mb-4 px-5 flex justify-center'>
+                        <p className='sm:w-[90%] text-[#ECECEC] text-[15px] text-center'>By continuing you agree to Thesisary’s 
+                        <a href='https://privacy-policysthesisary.tiiny.site/' className='font-bold underline text-white cursor-pointer'> Privacy policy </a> 
+                        and acknowledge you’ve read our privacy policy</p>
+                    </div>
+                </div>
+            </div>
+            :
+            ''
+        }
+    
+
+        {/*____Alert access_____*/}
+        {
+            accessAlert !== '' ?
+            <div className='fixed w-full h-[100vh] bg-black bg-opacity-20 sm:flex sm:px-5 justify-center items-center signin'>
+                <div className='sm:w-[560px] sm:min-h-[200px] w-full min-h-full p-10 rounded-md bg-[#D85900] shadow-lg relative'>
+                    {
+                        accessAlert === 'view' ?
+                        <div className='flex justify-end'>
+                            <p className='text-white text-[25px] cursor-pointer' onClick={() => setAccessAlert('')}>X</p>
+                        </div>
+                        :
+                        ''
+                    }
+
+                    <img src={ thesisaryWord } alt="thesisary" className='mx-auto h-[70px]' />
+
+                    {
+                        accessAlert === 'view' ?
+                        <p className='text-white text-[15px] text-center'>Oops you must to sign in first to view each documents.</p>
+                        :
+                        <p className='text-white text-[15px] text-center'>Oops you must to sign in first to access this page! The website will automatically refresh in 5s.</p>
+                    }
+
+                    <img src={ alertAccess } alt="accessError" className='mx-auto max-h-[170px] my-10' />
+
+                    {
+                        accessAlert === 'timeout' ?
+                        <div className='mx-auto w-[90px] h-[90px] rounded-[50%] border-2 flex justify-center items-center'>
+                            <p className='text-[25px] text-white'>{countDown}</p>
+                        </div>
+                        :
+                        ''
+                    }
+                </div>
+            </div>
+            :
+            ''
+        }
+
+
+
         {/*____Burger div____*/}
         {
             (menu && innerWidth <= 872 ? 
@@ -318,13 +501,44 @@ const Header2: React.FC<any> = ({ searchs, setSearch }) => {
                     <p className='text-right text-white text-[25px] font-bold my-5 px-4 cursor-pointer' onClick={ () => setMenu(false) }>X</p>
                     <div className='px-6'>
                         <p onClick={ () => navigationFun('') }
-                        className='text-white text-[18px] flex items-center mb-7 cursor-pointer txtBurger'><img src={ home } alt="menu" className='w-6 h-6 mr-3'/> Home</p>
+                        className='text-white md:text-[18px] text-[14px] flex items-center mb-7 cursor-pointer txtBurger'><img src={ home } alt="menu" className='w-6 h-6 mr-3'/> Home</p>
                         <p onClick={ () => navigationFun('resources') }
-                        className='text-white text-[18px] flex items-center mb-7 cursor-pointer txtBurger'><img src={ docsSource } alt="menu" className='w-6 h-6 mr-3' /> Resources</p>
+                        className='text-white md:text-[18px] text-[14px] flex items-center mb-7 cursor-pointer txtBurger'><img src={ docsSource } alt="menu" className='w-6 h-6 mr-3' /> Resources</p>
                         <p onClick={ () => navigationFun('about') }
-                        className='text-white text-[18px] flex items-center mb-7 cursor-pointer txtBurger'><img src={ infoA } alt="menu" className='w-6 h-6 mr-3'/> About</p>
-                        <p 
-                        className='text-white text-[18px] flex items-center mb-7 cursor-pointer txtBurger'><img src={ google  } alt="menu" className='w-6 h-6 mr-3' /> Sign in with google</p>
+                        className='text-white md:text-[18px] text-[14px] flex items-center mb-7 cursor-pointer txtBurger'><img src={ infoA } alt="menu" className='w-6 h-6 mr-3'/> About</p>
+                        <div>
+                            {/*____Sign in____*/}
+                            {
+                            !signIns ?
+                            <div onClick={() => setSigninClick(true)}
+                                className='flex items-center justify-center p-2 bg-white rounded-lg cursor-pointer overflow-hidden select-none relative'>
+                                <img src={ google } alt="google" className='w-6 h-6 mr-3' />
+                                <p className='font-inter font-normal text-[14px]'>Sign in with google</p>
+                            </div>
+                            :
+                            ''
+                            }
+                            
+                            {/*____Signed account____*/}
+                            {
+                                signIns ?
+                                <div className='flex items-center justify-center pl-3 bg-[#D85900] rounded-lg cursor-pointer overflow-hidden select-none relative'>
+                                    <img src={dataAccount.picture_URI} alt="user" 
+                                    className='h-7 rounded-[50%] mr-3 my-2' />
+                                    <div className='text-white my-2'>
+                                        <p className='font-normal max-w-[150px] whitespace-nowrap overflow-hidden overflow-ellipsis text-[14px]'>Sign in as {dataAccount.givenName}</p>
+                                        <p className='-mt-1 font-light max-w-[150px] whitespace-nowrap overflow-hidden overflow-ellipsis text-[12px]'>{dataAccount.email}</p>
+                                    </div>
+                                    <div className='bg-white flex items-center p-2 ml-3 mr-1 rounded-md'>
+                                        <img src={ google } alt="google" className='h-5 relative' />
+                                    </div>
+                                </div>
+                                :
+                                ''
+                            }
+                            
+
+                        </div>
                     </div>
                 </div>
             </div>
