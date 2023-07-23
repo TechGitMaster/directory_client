@@ -14,7 +14,13 @@ module.exports = () => {
         enableComment: { type: String, required: true },
         dateUploaded: { type: String, required: true },
         selectedTop: { type: String, required: true },
-        deleteNot: { type: String, required: true }
+        deleteNot: { type: String, required: true },
+        allRate: { type: Number, required: true },
+        star1: { type: Number, required: true },
+        star2: { type: Number, required: true },
+        star3: { type: Number, required: true },
+        star4: { type: Number, required: true },
+        star5: { type: Number, required: true }
     }, { timestamps: true });
 
     if(mongoose.models['resouces_document']) return mongoose.models['resouces_document'];

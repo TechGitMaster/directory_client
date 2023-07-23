@@ -18,6 +18,7 @@ const Authentication = async () => {
 
         if(localStorage.getItem('_SClrTk')){
             const { data } = await axios(obj);
+            //console.log(data.data);
             if(data.success){
                 dataR = [true, data.data];
             }

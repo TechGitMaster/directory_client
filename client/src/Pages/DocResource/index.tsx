@@ -21,6 +21,10 @@ const DocResource = () => {
     const [dataFetch, setDataFetch] = useState('fetching');
     const [yearTop, setYearTop] = useState('new');
     const [data, setData] = useState<any>([]);
+    const [rate, setRate] = useState<Array<any>>([ false, 0 ]);
+    const [rateCalculated, setRateCalculated] = useState<number>(0);
+
+    const [disableBttn, setDisableBttn] = useState<boolean>(false);
 
     //Toolbar_____________________________________________
     const toolbarPluginInstance = toolbarPlugin();
@@ -41,7 +45,7 @@ const DocResource = () => {
         setYearTop('new');
 
         const fetch = async () => {
-            const auth = await Authentication();
+            const auth = await Authentication() as any;
             if(auth[0]){
                 let funcD = async () => {
 
@@ -55,20 +59,42 @@ const DocResource = () => {
                             headers: {
                                 'Content-type': 'application/json'
                             }
-                        }
+                        } as any
           
                         let { data } = await axios(obj)
           
                         if(data.success){
-                          setDataFetch(data.data.length > 0 ? 'done':'error');
-                          setData(data.data);
-                          setYearTop(data.data.length > 0 ? data.data[0].selectedTop:'new');
+                            
+                            obj.method = "GET";
+                            obj.url = "https://directory-client-server.vercel.app/getRateDocument";
+                            obj.params = { email: auth[1].email, id_document: data.data[0]._id };
+
+                            const rateData = await axios(obj);
+
+                            if(rateData.data.success){
+                                setRate([rateData.data.rate === 0 ? false:true, rateData.data.rate]);
+                                setDataFetch(data.data.length > 0 ? 'done':'error');
+                                setData(data.data);
+                                setYearTop(data.data.length > 0 ? data.data[0].selectedTop:'new');
+
+                                
+
+                                //Calculate rate________________________________________
+                                if(data.data.length > 0){
+                                    let arr = [data.data[0].star1, data.data[0].star2, data.data[0].star3, data.data[0].star4, data.data[0].star5]
+                                    let WeightedSum = arr.map((a, i) => (a*(i+1))).reduce((acc, curr) => acc+curr);
+                                    
+                                    setRateCalculated(Number.isNaN(Number((WeightedSum/data.data[0].allRate).toFixed(2))) ? 0:Number((WeightedSum/data.data[0].allRate).toFixed(2)));
+                                }
+                            }else{
+                                setDataFetch('error');
+                            }
+
                         }else{
                           setDataFetch('error');
                         }
                     }catch(e){
                       setDataFetch('error');
-                      console.log(e);
                     }
           
                   }
@@ -85,9 +111,70 @@ const DocResource = () => {
 
 
 
-    //Rating button______________________________________________________________
-    const handleRating = (rate: number) => {
-        //alert(rate);
+    //Rating button first time______________________________________________________________
+    const handleRating = async (rate: number) => {
+        const auth = await Authentication() as any;
+        if(auth[0]){
+            if(!disableBttn){
+                setDisableBttn((a) => !a);
+                try{
+
+                    let obj = {
+                        method: 'POST',
+                        url: 'https://directory-client-server.vercel.app/giveRate',
+                        params: { /* This is for GET method */ },
+                        data: { email: auth[1].email, rate: rate, id_document: data[0]._id },
+                        headers: {
+                            'Content-type': 'application/json'
+                        }
+                    }
+    
+                    await axios(obj);
+                    
+                    window.location.reload();
+                }catch(e){
+                    window.location.reload();
+                }
+            }
+        }else{
+            setAccessAlert('timeout');
+        }
+    }
+
+    //Rating button again___________________________________________
+    const againHandleRating = async (rates: number) => {
+
+        const auth = await Authentication() as any;
+        if(auth[0]){
+            if(rates !== rate[1]){
+                if(!disableBttn){
+                    setDisableBttn((a) => !a);
+                    try{
+
+                        let obj = {
+                            method: 'POST',
+                            url: 'https://directory-client-server.vercel.app/updateRate',
+                            params: { /* This is for GET method */ },
+                            data: { email: auth[1].email, rate: rates, id_document: data[0]._id },
+                            headers: {
+                                'Content-type': 'application/json'
+                            }
+                        }
+        
+                        await axios(obj);
+                        
+                        window.location.reload();
+                    }catch(e){
+                        window.location.reload();
+                    }
+                }
+            }else{
+                window.location.reload();
+            }
+            
+        }else{
+            setAccessAlert('timeout');
+        }
     }
 
     return (
@@ -124,29 +211,33 @@ const DocResource = () => {
                                         dataFetch === 'done' ?
                                         <div>
                                             <p className='sm:text-[18px] text-[17px] text-[#29292d] font-semibold'>Ratings of Viewer</p>
-                                            <p className='sm:text-[25px] text-[22px] text-[#29292d] font-semibold mt-2'>4.8/5</p>
+                                            <p className='sm:text-[25px] text-[22px] text-[#29292d] font-semibold mt-2'>{ rateCalculated }/5</p>
                                             <div className='flex mb-2'>
-                                                <img src={ goldStar } alt="star" className='h-[20px]' />
-                                                <img src={ goldStar } alt="star" className='h-[20px]' />
-                                                <img src={ goldStar } alt="star" className='h-[20px]' />
-                                                <img src={ goldStar } alt="star" className='h-[20px]' />
-                                                <img src={ whiteStar } alt="star" className='h-[20px]' />
+                                                <Rating
+                                                    SVGstyle={ { 'display':'inline', 'marginTop': '-4px' } }
+                                                    size={22}
+                                                    readonly={ true }
+                                                    allowFraction={ true }
+                                                    initialValue={ rateCalculated === 5 ? 5: rateCalculated !==0 ? rateCalculated % 1 === 0 ? rateCalculated:rateCalculated-1: 0 }
+                                                    showTooltip={ false }
+                                                    tooltipStyle={{ 'fontSize': '13px' }}
+                                                />
                                             </div>
-                                            <p className='text-[#565454] sm:text-[15px] text-[14px] mb-4'>415 reviews</p>
+                                            <p className='text-[#565454] sm:text-[15px] text-[14px] mb-4'>{ data[0].allRate } ratings</p>
 
                                             {/*____Board Rating___*/}
                                             <p className='sm:text-[16px] text-[14px] font-semibold mb-2'>Board Rating</p>
 
                                             {
-                                                '.'.repeat(5).split('').map((a, i) => 
+                                                [data[0].star5, data[0].star4, data[0].star3, data[0].star2, data[0].star1].map((a, i) => 
                                                 <div key={ Math.random() } className='my-2 text-[14px] text-[#565454]'>
                                                     <div className='flex justify-between w-[98%] mx-auto'>
                                                         <p>{ Math.floor(5-i) } star</p>
-                                                        <p>70%</p>
+                                                        <p>{Number.isNaN(Math.floor((a * 100) / data[0].allRate)) ? 0:Math.floor((a * 100) / data[0].allRate)}%</p>
                                                     </div>
                                             
                                                     <div className='h-[14px] overflow-hidden rounded-[20px] bg-[#E4E3DB] w-full'>
-                                                        <div className='w-[50%] h-[14px] rounded-[20px] bg-[#FACA51]'></div>
+                                                        <div className={`h-[14px] rounded-[20px] bg-[#FACA51] w-[${Number.isNaN(Math.floor((a * 100) / data[0].allRate)) ? 0:Math.floor((a * 100) / data[0].allRate)}%]`}></div>
                                                     </div>
                                                 </div>
                                                 )
@@ -172,17 +263,42 @@ const DocResource = () => {
                                 {
                                     dataFetch === 'done' ?
                                     <div className='rounded-lg p-4 bg-white mb-2'>
-                                        <p className='sm:text-[18px] text-[17px] text-[#29292d] font-semibold'>Give it a rate?</p>
 
-                                        <Rating
-                                            onClick={handleRating}
-                                            SVGstyle={ { 'display':'inline' } }
-                                            size={24}
-                                            showTooltip={ true }
-                                            tooltipDefaultText={ 'Your rate' }
-                                            tooltipStyle={{ 'fontSize': '13px' }}
-                                            tooltipArray={ ['01 star', '02 star', '03 star', '04 star', '05 star'] }
-                                         />
+                                        {
+                                            rate[0] ? 
+                                            <div className='mb-5'>
+                                                <p className='sm:text-[18px] text-[17px] text-[#29292d] font-semibold mb-1'>Give it a rate again?</p>
+
+                                                <Rating
+                                                    onClick={ againHandleRating }
+                                                    SVGstyle={ { 'display':'inline' } }
+                                                    size={24}
+                                                    showTooltip={ true }
+                                                    tooltipDefaultText={ 'Your rate' }
+                                                    tooltipStyle={{ 'fontSize': '13px' }}
+                                                    tooltipArray={ ['01 star', '02 star', '03 star', '04 star', '05 star'] }
+                                                 />
+                                                </div>
+                                            :
+                                            ''
+                                        }
+
+                                        <div>
+                                            <p className='sm:text-[18px] text-[17px] text-[#29292d] font-semibold'>{!rate[0] ? 'Give it a rate?':'Your rate'}</p>
+
+                                            <Rating
+                                                onClick={ handleRating }
+                                                SVGstyle={ { 'display':'inline' } }
+                                                size={24}
+                                                readonly={ rate[0] }
+                                                initialValue={ rate[1] }
+                                                showTooltip={ true }
+                                                tooltipDefaultText={ 'Your rate' }
+                                                tooltipStyle={{ 'fontSize': '13px' }}
+                                                tooltipArray={ ['01 star', '02 star', '03 star', '04 star', '05 star'] }
+                                             />
+                                        </div>
+                                        
                                     </div>
                                     :
                                     ''
