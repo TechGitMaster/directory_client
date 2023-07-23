@@ -53,7 +53,7 @@ const DocResource = () => {
           
                         let obj = {
                             method: 'POST',
-                            url: 'https://directory-client-server.vercel.apphttps://directory-client-server.vercel.apphttps://directory-client-server.vercel.app/getSelected',
+                            url: 'https://directory-client-server.vercel.app/getSelected',
                             params: {/* This is for GET method */},
                             data: { id: id },
                             headers: {
