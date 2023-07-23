@@ -237,7 +237,7 @@ const DocResource = () => {
                                                     </div>
                                             
                                                     <div className='h-[14px] overflow-hidden rounded-[20px] bg-[#E4E3DB] w-full'>
-                                                        <div className={'h-[14px] rounded-[20px] bg-[#FACA51] w-['+(a === 0 && data[0].allRate === 0 ? 0: Math.floor((a * 100) / data[0].allRate))+'%]'}></div>
+                                                        <div className={'h-[14px] rounded-[20px] bg-[#FACA51]'} style={{ width: (a === 0 && data[0].allRate === 0 ? 0: Math.floor((a * 100) / data[0].allRate))+'%' }}></div>
                                                     </div>
                                                 </div>
                                                 )
