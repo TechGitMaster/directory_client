@@ -53,7 +53,7 @@ const DocResource = () => {
           
                         let obj = {
                             method: 'POST',
-                            url: 'https://directory-client-server.vercel.app/getSelected',
+                            url: 'https://directory-client-server.vercel.apphttps://directory-client-server.vercel.apphttps://directory-client-server.vercel.app/getSelected',
                             params: {/* This is for GET method */},
                             data: { id: id },
                             headers: {
@@ -237,7 +237,7 @@ const DocResource = () => {
                                                     </div>
                                             
                                                     <div className='h-[14px] overflow-hidden rounded-[20px] bg-[#E4E3DB] w-full'>
-                                                        <div className={`h-[14px] rounded-[20px] bg-[#FACA51] w-[${Number.isNaN(Math.floor((a * 100) / data[0].allRate)) ? 0:Math.floor((a * 100) / data[0].allRate)}%]`}></div>
+                                                        <div className={`h-[14px] rounded-[20px] bg-[#FACA51] w-[${Number.isNaN(Math.floor((a * 100) / data[0].allRate)) ? '0%':Math.floor((a * 100) / data[0].allRate)+'%'}]`}></div>
                                                     </div>
                                                 </div>
                                                 )
