@@ -5,10 +5,15 @@ import '../../App.css';
 import { CarouselsDotTopThree, CarouselsDotTopOther, CarouselArrow } from './Carousel';
 import Footer from '../../Components/Footer';
 
-import { useOutletContext } from 'react-router-dom';
+import { useOutletContext, useNavigate } from 'react-router-dom';
 
 const Home: React.FC = () => {
     const { setSearch }: any = useOutletContext(); 
+    const navigate = useNavigate();
+
+    const exloreNow = () => {
+        navigate('/Resources');
+    }
 
     return (
         <>
@@ -21,7 +26,7 @@ const Home: React.FC = () => {
                         <p className='lg:w-[48%] md:w-[48%] w-[100%] font-inter font-light text-[17px] lg:text-left md:text-left text-center text-[#EFEFEF] mt-2 mb-6'>Students have unlimited access for research materials that’s free for students.</p>
                     </div>
                     <div className='lg:block md:block flex justify-center'>
-                        <div className='w-[185px] flex items-center justify-center bg-[#FFF200] lg:py-[13px] md:py-[13px] py-[11px] lg:px-[20px] md:px-[20px] px-[16px] rounded-lg cursor-pointer'>
+                        <div onClick={ exloreNow } className='w-[185px] flex items-center justify-center bg-[#FFF200] lg:py-[13px] md:py-[13px] py-[11px] lg:px-[20px] md:px-[20px] px-[16px] rounded-lg cursor-pointer'>
                             <p className='lg:text-[17px] md:text-[17px] text-[15px] font-medium'>Explore now</p>
                             <img src={ book } alt="book" className='w-7 h-7 ml-2' />
                         </div>

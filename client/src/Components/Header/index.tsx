@@ -449,9 +449,9 @@ const Header2: React.FC<any> = ({ searchs, setSearch, accessAlert, setAccessAler
                         <div className='w-full h-full absolute left-0 top-0 flex justify-center items-center opacity-0'>
                             <GoogleOAuthProvider clientId='932871422101-n947707985vdci1bnqulmqbjc90j306j.apps.googleusercontent.com'>         
                                 <GoogleLogin 
-                                    width='3000'
                                     onSuccess={(e: any) => signIn_Google(jwtDecode(e.credential)) }
                                     onError={() => console.log('LOGINN ERROR')}
+                                    
                                 />    
                             </GoogleOAuthProvider>
                         </div>
