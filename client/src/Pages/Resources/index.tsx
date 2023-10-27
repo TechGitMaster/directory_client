@@ -32,6 +32,7 @@ const Resources: React.FC = () => {
     const courseS = useRef<any>('');
     const yearS = useRef<any>('');
     const [searchCache, setSearchCache] = useState(['', '', '']);
+    const [searchFilter, setSearchFilter] = useState('');
 
     //Cancel axios search bar if have new request_______________________________________
     const [searchState, setSearchState] = useState('new');
@@ -212,6 +213,14 @@ const Resources: React.FC = () => {
         setSearchState('done');
     }
 
+    //Hit enter in input______________________________________
+    const inputSearch = (e: any) => {
+        if(e.key === 'Enter' && searchS.current.value !== searchFilter){
+            setSearchFilter(searchS.current.value);
+            btnSearch();
+        }
+    }    
+
     return (
         <>
         <div onClick={() => setSearch(false)}>
@@ -230,7 +239,7 @@ const Resources: React.FC = () => {
                         (firstCome ? searchs ? 'border-2 border-[red]':'':'')}>
                             {/*__Input text__*/}
                             <div className='w-full p-4'>
-                                <input ref={ searchS } type='text' placeholder='Search for your research' 
+                                <input ref={ searchS } type='text' placeholder='Search for your research' onKeyDown={ inputSearch }
                                 className='w-[100%] lg:text-[16px] md:text-[16px] text-[15px] text-black outline-none '/>
                             </div>
                         </div>
@@ -242,14 +251,14 @@ const Resources: React.FC = () => {
 
                             {/*___Course___*/}
                             <select ref={ courseS } className={'w-[99%] text-[15px] p-3 cursor-pointer rounded-md bg-white text-[#767373] '+
-                            (firstCome ? coursess ? 'border-2 border-[red]':'':'')}>
+                            (firstCome ? coursess ? 'border-2 border-[red]':'':'')} onChange={ () => setSearchFilter('') }>
                                 <option selected>Select a Track</option>
                                 { courses.map(a => <option value={a}>{a}</option>) }
                             </select>
 
                             {/*___Year___*/}
                             <select ref={ yearS } className={'w-[99%] ml-1 text-[15px] p-3 cursor-pointer rounded-md bg-white text-[#767373] '+
-                            (firstCome ? years ? 'border-2 border-[red]':'':'')}>
+                            (firstCome ? years ? 'border-2 border-[red]':'':'')} onChange={ () => setSearchFilter('') }>
                                 <option selected>Select a Year</option>
                                 { yearArray().map(a => <option value={a[0]}>{a[1]}</option>) }
                             </select>
