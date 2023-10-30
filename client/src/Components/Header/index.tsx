@@ -81,15 +81,15 @@ const Header2: React.FC<any> = ({ searchs, setSearch, accessAlert, setAccessAler
 
     //Input field change_____________________________________________________________
     const inputText = (e:any) => {
-        setSearchText(e.currentTarget.value)
+        let data = e.currentTarget.value
+        setSearchText(data)
         setSearchType(false);
 
         clearTimeout(typingTimeout);
 
         const timeout = setTimeout(() => {
             setSearchType(true);
-            
-            setArrSearched(miniSearch.search(searchText));
+            setArrSearched(miniSearch.search(data));
         }, 1000); 
 
         setTypingTimeout(timeout);
@@ -233,7 +233,7 @@ const Header2: React.FC<any> = ({ searchs, setSearch, accessAlert, setAccessAler
                         {<img src={ logo } className='lg:w-[50px] md:w-[55px] w-[40px] rounded-md' alt="logo" />}
 
                         <div onClick={ () => setSearch(true) } className={'lg:w-96 w-full h-full flex justify-between items-center ml-3 rounded-[20px] pl-3 pr-2 bg-[#F3F3F3] relative'}>
-                            <input type='text' onChange={ inputText } value={ searchText } placeholder='Search content from resource document' className='w-[87%] bg-[#F3F3F3] text-[15px] text-black outline-none'/>
+                            <input type='text' onChange={ inputText } value={ searchText } placeholder='Search' className='w-[87%] bg-[#F3F3F3] text-[15px] text-black outline-none'/>
 
                             <div className='bg-[#e0e9f6] rounded-[50%] p-1'>
                                 <img src={search} alt="search" className='lg:w-7 md:w-7 w-5 lg:h-6 md:h-6 h-5' />
@@ -369,7 +369,7 @@ const Header2: React.FC<any> = ({ searchs, setSearch, accessAlert, setAccessAler
                 
                 <div className='w-full rounded-[25px] p-1 bg-[#F3F3F3] mt-4 mb-7 relative'>
                     <div className='pl-3 pr-3 py-2 rounded-[25px] bg-white'>
-                        <input type='text' onChange={ inputText } value={ searchText }  placeholder='Search content from resource document' className='w-[100%] bg-[white] text-[16px] text-[#393333] outline-none'/>
+                        <input type='text' onChange={ inputText } value={ searchText }  placeholder='Search' className='w-[100%] bg-[white] text-[16px] text-[#393333] outline-none'/>
                     </div>
                 </div>
 

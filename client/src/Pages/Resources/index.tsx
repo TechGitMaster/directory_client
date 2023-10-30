@@ -97,7 +97,7 @@ const Resources: React.FC = () => {
             try{
                 let obj = {
                     method: 'GET',
-                    url: 'https://directory-client-server.vercel.app/get_resources',
+                    url: 'http://localhost:4000/get_resources',
                     params: { course: courseS.current.value, search: searchS.current.value, 
                         year: yearS.current.value, skip: 0 },
                     data: { /*this is for req.body*/ },
@@ -194,7 +194,7 @@ const Resources: React.FC = () => {
         try{
             let obj = {
                 method: 'GET',
-                url: 'https://directory-client-server.vercel.app/get_resources',
+                url: 'http://localhost:4000/get_resources',
                 params: { course: searchCache[0], search: searchCache[1], year: searchCache[2], skip: data },
                 data: { /*this is for req.body*/ },
                 headers: {
@@ -239,7 +239,7 @@ const Resources: React.FC = () => {
                         (firstCome ? searchs ? 'border-2 border-[red]':'':'')}>
                             {/*__Input text__*/}
                             <div className='w-full p-4'>
-                                <input ref={ searchS } type='text' placeholder='Search for your research' onKeyDown={ inputSearch }
+                                <input ref={ searchS } type='text' placeholder='Search a Word' onKeyDown={ inputSearch }
                                 className='w-[100%] lg:text-[16px] md:text-[16px] text-[15px] text-black outline-none '/>
                             </div>
                         </div>
