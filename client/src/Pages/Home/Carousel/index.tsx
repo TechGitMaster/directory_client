@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import '../../../App.css';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { example, gifLoading, imgFrontPDF, empty } from '../../../utilities/PNG';
+import { example, gifLoading, imgFrontPDF, empty, arr1, arr2, arr3, arr4, arr5 } from '../../../utilities/PNG';
 import { GET_THREE_RESOURCE, GET_TOPOTHERS_RESOURCE } from '../../../Redux/Actions';
 import { useNavigate, useOutletContext } from 'react-router-dom';
 
@@ -69,9 +69,9 @@ export const CarouselArrow: React.FC = () => {
         responsive={responsiveArrow} 
       >
         {
-            '.'.repeat(4).split('').map(a => 
+            [arr1, arr2, arr3, arr4, arr5].map(a => 
               <div key={Math.random()} className='relative rounded-2xl overflow-hidden'>
-                <img src={ example } alt="topThesis" className='w-full lg:h-[530px] md:h-[530px] h-[430px] object-cover'/>
+                <img src={ a } alt="topThesis" className='w-full lg:h-[530px] md:h-[530px] h-[430px] object-cover'/>
                 {
                   /*<div className='absolute w-full bottom-0 min-h-[100px] bg-[#1B1B1B] bg-opacity-50 p-6'>
                     <p className='text-white lg:text-[20px] md:text-[20px] text-[17px] lg:w-[70%] md:w-[70%] w-[100%] font-inter font-medium mb-3'>Proposed systemized web-based academic thesis paper directory for s...</p>
@@ -150,8 +150,8 @@ export const CarouselsDotTopThree: React.FC = () => {
                 {
                   selectorTopThree.res.map((a: any, i: number) => 
                     <div key={ Math.random() } className='p-3 flex h-[100%]'>
-                      <div className='rounded-2xl overflow-hidden flex-1 shadow-lg'>
-                        <div className='w-[100%] h-[200px] rounded-l-md bg-white overflow-hidden relative' >
+                      <div className='rounded-2xl overflow-hidden flex flex-col flex-1 shadow-lg'>
+                        <div className='w-[100%] h-[200px] rounded-l-md  bg-white overflow-hidden relative' >
                           { 
                             //<img src={ imgFrontPDF } alt="frontPage" className='w-full h-full absolute z-20' />
                           }
@@ -166,7 +166,7 @@ export const CarouselsDotTopThree: React.FC = () => {
                           </div>
                         </div>
 
-                        <div className='p-4 bg-[#2A2A2C] h-[100%]'>
+                        <div className='p-4 bg-[#2A2A2C] flex-1 flex flex-col justify-between'>
                           <p className='md:text-[16px] text-[15px] text-[#FFF200] font-inter font-medium mb-3 line-clamp-3'>{a.title}</p>
                           <p className='text-white text-[15px]'><span className='font-semibold'>Track:</span> {a.course}</p>
                           <p className='text-white text-[15px]'><span className='font-semibold'>Student Member:</span> {parseInt(a.member) > 10 ? a.member:`0${a.member}`}</p>
@@ -261,7 +261,7 @@ export const CarouselsDotTopOther: React.FC = () => {
               {
                 selectorTopOther.res.map((a:any, i: number) => 
                   <div key={ Math.random() } className='p-3 flex h-[100%]'>
-                    <div className='rounded-2xl overflow-hidden flex-1 shadow-lg'>
+                    <div className='rounded-2xl overflow-hidden flex flex-col flex-1 shadow-lg'>
                       <div className='w-[100%] h-[200px] rounded-l-md bg-white overflow-hidden relative' >
                         { 
                           //<img src={ imgFrontPDF } alt="frontPage" className='w-full h-full absolute z-20' />
@@ -277,7 +277,7 @@ export const CarouselsDotTopOther: React.FC = () => {
                         </div>
                       </div>
 
-                      <div className='p-4 bg-[#2A2A2C] h-[100%]'>
+                      <div className='p-4 bg-[#2A2A2C] flex-1 flex flex-col justify-between'>
                         <p className='md:text-[16px] text-[15px] text-[#FFF200] font-inter font-medium mb-3 line-clamp-3'>{a.title}</p>
                         <p className='text-white text-[15px]'><span className='font-semibold'>Track:</span> {a.course}</p>
                         <p className='text-white text-[15px]'><span className='font-semibold'>Student Member:</span> {parseInt(a.member) > 10 ? a.member:`0${a.member}`}</p>

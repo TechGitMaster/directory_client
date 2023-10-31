@@ -29,6 +29,13 @@ import member3 from '../assets/images/PNG/member3.png';
 import member4 from '../assets/images/PNG/member4.png';
 
 
+import arr1 from '../assets/images/PNG/Arr1.png';
+import arr2 from '../assets/images/PNG/Arr2.png';
+import arr3 from '../assets/images/PNG/Arr3.png';
+import arr4 from '../assets/images/PNG/Arr4.png';
+import arr5 from '../assets/images/PNG/Arr5.png';
+
+
 //GIF_____________________________________________________________
 const gifLoading = require('../assets/images/PNG/loading.gif');
 
@@ -63,4 +70,11 @@ export {
     member2,
     member3,
     member4,
+
+    
+    arr1,
+    arr2,
+    arr3,
+    arr4,
+    arr5
 };
