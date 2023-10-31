@@ -446,7 +446,7 @@ const Header2: React.FC<any> = ({ searchs, setSearch, accessAlert, setAccessAler
                         <img src={ google } alt="google" className='w-6 h-6 mr-3' />
                         <p className='font-inter font-normal text-[15px]'>Continue with google</p>
 
-                        <div className='w-full h-full absolute left-0 top-0 flex justify-center items-center opacity-0'>
+                        <div className='w-full h-full absolute left-0 top-0 flex justify-center items-center' style={{ 'opacity': '0.01' }}>
                             <GoogleOAuthProvider clientId='932871422101-n947707985vdci1bnqulmqbjc90j306j.apps.googleusercontent.com'>         
                                 <GoogleLogin 
                                     onSuccess={(e: any) => signIn_Google(jwtDecode(e.credential)) }
