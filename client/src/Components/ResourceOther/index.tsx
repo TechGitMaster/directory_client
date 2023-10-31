@@ -174,8 +174,10 @@ const ResourceOther = () => {
                                          className='w-full flex-1 rounded-md overflow-hidden bg-[#2A2A2C] cursor-pointer pb-5'>
                                             
                                             <div className='w-[100%] h-[200px] mb-3 bg-white overflow-hidden relative' >
-                                              <img src={ imgFrontPDF } alt="frontPage" className='w-full h-full absolute z-20' />
-                                              <div className='blur-sm h-[300px]'>
+                                                { 
+                                                    //<img src={ imgFrontPDF } alt="frontPage" className='w-full h-full absolute z-20' /> 
+                                                }
+                                              <div className='h-[300px]'>
                                                   <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.7.107/build/pdf.worker.min.js">
                                                     <Viewer
                                                         defaultScale={ 0.4 }

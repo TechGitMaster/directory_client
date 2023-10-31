@@ -152,8 +152,10 @@ export const CarouselsDotTopThree: React.FC = () => {
                     <div key={ Math.random() } className='p-3 flex h-[100%]'>
                       <div className='rounded-2xl overflow-hidden flex-1 shadow-lg'>
                         <div className='w-[100%] h-[200px] rounded-l-md bg-white overflow-hidden relative' >
-                          <img src={ imgFrontPDF } alt="frontPage" className='w-full h-full absolute z-20' />
-                          <div className='blur-sm h-[300px]'>
+                          { 
+                            //<img src={ imgFrontPDF } alt="frontPage" className='w-full h-full absolute z-20' />
+                          }
+                          <div className='h-[300px]'>
                               <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.7.107/build/pdf.worker.min.js">
                                 <Viewer
                                     defaultScale={ 0.4 }
@@ -261,8 +263,10 @@ export const CarouselsDotTopOther: React.FC = () => {
                   <div key={ Math.random() } className='p-3 flex h-[100%]'>
                     <div className='rounded-2xl overflow-hidden flex-1 shadow-lg'>
                       <div className='w-[100%] h-[200px] rounded-l-md bg-white overflow-hidden relative' >
-                        <img src={ imgFrontPDF } alt="frontPage" className='w-full h-full absolute z-20' />
-                        <div className='blur-sm h-[300px]'>
+                        { 
+                          //<img src={ imgFrontPDF } alt="frontPage" className='w-full h-full absolute z-20' />
+                        }
+                        <div className='h-[300px]'>
                             <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.7.107/build/pdf.worker.min.js">
                               <Viewer
                                   defaultScale={ 0.4 }
